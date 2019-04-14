@@ -4,18 +4,20 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>小宸工作站</title>
+  <title>[2050] 冰水挑战（dp思路简单总结） | 小宸工作站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="描述显示在哪里？">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小宸工作站">
-<meta property="og:url" content="http://www.kesisour.com/index.html">
+  <meta name="description" content="Problem Description Polar Bear Pitching helps you crystallize your message.The stage could not be any cooler, and we mean literally:a hole cut through the ice in the frozen Baltic Sea. 2050有一项很有挑战的活动">
+<meta name="keywords" content="dp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[2050] 冰水挑战（dp思路简单总结）">
+<meta property="og:url" content="http://www.kesisour.com/2019/04/14/2050-冰水挑战（dp思路简单总结）/index.html">
 <meta property="og:site_name" content="小宸工作站">
-<meta property="og:description" content="描述显示在哪里？">
+<meta property="og:description" content="Problem Description Polar Bear Pitching helps you crystallize your message.The stage could not be any cooler, and we mean literally:a hole cut through the ice in the frozen Baltic Sea. 2050有一项很有挑战的活动">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-14T08:21:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小宸工作站">
-<meta name="twitter:description" content="描述显示在哪里？">
+<meta name="twitter:title" content="[2050] 冰水挑战（dp思路简单总结）">
+<meta name="twitter:description" content="Problem Description Polar Bear Pitching helps you crystallize your message.The stage could not be any cooler, and we mean literally:a hole cut through the ice in the frozen Baltic Sea. 2050有一项很有挑战的活动">
   
     <link rel="alternative" href="/atom.xml" title="小宸工作站" type="application/atom+xml">
   
@@ -71,70 +73,7 @@
   </div>
 </header>
     <div class="outer">
-      <section id="main">
-  
-    <article id="post-关于Windows换行符以及gethar-替代的讨论" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/14/关于Windows换行符以及gethar-替代的讨论/" class="article-date">
-  <time datetime="2019-04-14T08:54:34.000Z" itemprop="datePublished">2019-04-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ACM/">ACM</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/14/关于Windows换行符以及gethar-替代的讨论/">关于Windows换行符及gethar()替代</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>昨天在做2050的时候居然在第一道签到题罚了六次时？？当时直接懵逼，把题目给小伙伴帮我重新写了一个(阿洋NB！)，之后看集训群里面才知道是换行符的锅(haoyuan学长NB！)。</p>
-<p>查阅了一下：<a href="https://www.cnblogs.com/xiaotiannet/p/3510586.html" target="_blank" rel="noopener">原链接</a></p>
-<blockquote>
-<p>在Windows中,</p>
-<p>‘\r’ 回车，回到当前行的行首，而不会换到下一行，如果接着输出的话，本行以前的内容会被逐一覆盖；</p>
-<p>‘\n’ 换行，换到当前位置的下一行，而不会回到行首；</p>
-<p>Unix系统里，每行结尾只有“&lt;换行&gt;”，即”\n”；Windows系统里面，每行结尾是“&lt;回车&gt;&lt;换行&gt;”，即“\r\n”；Mac系统里，每行结尾是“&lt;回车&gt;”，即”\r”；。一个直接后果是，Unix/Mac系统下的文件在Windows里打开的话，所有文字会变成一行；而Windows里的文件在Unix/Mac下打开的话，在每行的结尾可能会多出一个^M符号。</p>
-<p>Linux中遇到换行符(“\n”)会进行回车+换行的操作，回车符反而只会作为控制字符(“^M”)显示，不发生回车的操作。而windows中要回车符+换行符(“\r\n”)才会回车+换行，缺少一个控制符或者顺序不对都不能正确的另起一行。</p>
-</blockquote>
-<p>而杭电的判题机是Windows的，所以妄图单独用一个getchar()读掉回车符的操作就gg了。</p>
-<p>所以，尽快熟悉String的使用吧，getline()大法好啊！</p>
-<p>使用String完成循环读取字符串并挨个字符处理：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">string</span> str;</span><br><span class="line">	<span class="keyword">while</span> (getline(<span class="built_in">cin</span>, str)) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length(); i++) &#123;</span><br><span class="line">			<span class="comment">//</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>（等等…我在写这篇文章的时候突然意识到了学长的真正意思应该是使用getline()读掉换行…）</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://www.kesisour.com/2019/04/14/关于Windows换行符以及gethar-替代的讨论/" data-id="cjugqtsqu0004s0txhro5dy42" class="article-share-link" data-share="baidu" data-title="关于Windows换行符及gethar()替代">Share</a>
-      
-
-      
-        <a href="http://www.kesisour.com/2019/04/14/关于Windows换行符以及gethar-替代的讨论/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂项/">杂项</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2050-冰水挑战（dp思路简单总结）" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-2050-冰水挑战（dp思路简单总结）" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/04/14/2050-冰水挑战（dp思路简单总结）/" class="article-date">
   <time datetime="2019-04-14T08:21:37.000Z" itemprop="datePublished">2019-04-14</time>
@@ -151,8 +90,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/14/2050-冰水挑战（dp思路简单总结）/">[2050] 冰水挑战（dp思路简单总结）</a>
+    <h1 class="article-title" itemprop="name">
+      [2050] 冰水挑战（dp思路简单总结）
     </h1>
   
 
@@ -208,124 +147,33 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-汉诺塔" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/10/汉诺塔/" class="article-date">
-  <time datetime="2019-04-09T23:59:57.000Z" itemprop="datePublished">2019-04-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ACM/">ACM</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/2019/04/14/关于Windows换行符以及gethar-替代的讨论/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/10/汉诺塔/">汉诺塔的非递归实现</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="题目与分析"><a href="#题目与分析" class="headerlink" title="题目与分析"></a>题目与分析</h2><p>今天在刷pta上面的数据结构的时候，发现居然忘了汉诺塔怎么做…<br>日…我真的是越来越菜了…<br>汉诺塔是什么这里就不用来重复了吧？附个<a href="https://zh.wikipedia.org/zh-hans/%E6%B1%89%E8%AF%BA%E5%A1%94" target="_blank" rel="noopener">链接</a>，有兴趣的自己去看。</p>
-<p>接下来简单的讲一下思路。我们都知道汉诺塔的思想就是靠和尚们互相推诿来做对吧？当你是其中一个和尚，你看见一堆盘子丢在a柱上面，你要做的事情只有三个：</p>
-<ol>
-<li><p>命令小和尚把除了最后一个之外的盘子全都丢在b柱上。</p>
-</li>
-<li><p>自己把a柱上最后一个盘子放在c柱上。</p>
-</li>
-<li><p>命令小和尚把b柱上的盘子丢在c柱上，自己走人。</p>
-</li>
-</ol>
-<p>这样一看多简单啊！<del>多么醉人的递归思想</del></p>
-<p>来，直接po代码了。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="keyword">char</span> a, b, c;</span><br><span class="line">	node(<span class="keyword">int</span> m, <span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> z) :n(m), a(x), b(y), c(z)&#123;&#125;</span><br><span class="line">&#125;node;</span><br><span class="line"></span><br><span class="line"><span class="built_in">stack</span> &lt;node&gt; s;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">	s.push(node(n, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>));</span><br><span class="line">	<span class="keyword">while</span> (!s.empty()) &#123;</span><br><span class="line">		node t = s.top();</span><br><span class="line">		s.pop();</span><br><span class="line">		<span class="keyword">if</span> (t.n == <span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">"%c -&gt; %c\n"</span>, t.a, t.c);</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			s.push(node(t.n - <span class="number">1</span>, t.b, t.a, t.c));</span><br><span class="line">			s.push(node(<span class="number">1</span>, t.a, t.b, t.c));</span><br><span class="line">			s.push(node(t.n - <span class="number">1</span>, t.a, t.c, t.b));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://www.kesisour.com/2019/04/10/汉诺塔/" data-id="cjugqtsr5000fs0txs3499awm" class="article-share-link" data-share="baidu" data-title="汉诺塔的非递归实现">Share</a>
-      
-
-      
-        <a href="http://www.kesisour.com/2019/04/10/汉诺塔/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Hello World!" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/30/Hello World!/" class="article-date">
-  <time datetime="2019-03-29T19:31:12.000Z" itemprop="datePublished">2019-03-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/未分类/">未分类</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          关于Windows换行符及gethar()替代
         
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/30/Hello World!/">&#34;Hello World！&#34;</a>
-    </h1>
   
+    <a href="/2019/04/10/汉诺塔/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">汉诺塔的非递归实现</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>小宸写的第一篇博文好叭！<br>话说，这里真的是正文嘛？？<br>哇靠，写起来这么奇怪的吗？写在这里真的会显示在网页上嘛？<br>我好怀疑啊（盯</p>
-<p>还有，hexo的原生主题也太丑了吧….看不下去的那种好吗？？？</p>
-<p>时间有限，我就先写这么多了哟！有时间再来好好研究下这玩意！</p>
-<p><del>下面是我的试验田</del></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">"这里应该是代码块"</span>);</span><br></pre></td></tr></table></figure>
-<h1 id="这是一级标题"><a href="#这是一级标题" class="headerlink" title="这是一级标题"></a>这是一级标题</h1><h2 id="这是二级标题"><a href="#这是二级标题" class="headerlink" title="这是二级标题"></a>这是二级标题</h2>
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://www.kesisour.com/2019/03/30/Hello World!/" data-id="cjugqtsqo0001s0txvhgoaayn" class="article-share-link" data-share="baidu" data-title="&#34;Hello World！&#34;">Share</a>
-      
-
-      
-        <a href="http://www.kesisour.com/2019/03/30/Hello World!/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
 
 
-  
-
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2019/04/14/2050-冰水挑战（dp思路简单总结）/" data-title="[2050] 冰水挑战（dp思路简单总结）" data-url="http://www.kesisour.com/2019/04/14/2050-冰水挑战（dp思路简单总结）/"></div>
+  </section>
 </section>
       
       <aside id="sidebar">

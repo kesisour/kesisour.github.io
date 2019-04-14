@@ -4,18 +4,20 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>Tag: 数据结构 | 小宸工作站</title>
+  <title>关于Windows换行符及gethar()替代 | 小宸工作站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="描述显示在哪里？">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小宸工作站">
-<meta property="og:url" content="http://www.kesisour.com/tags/数据结构/index.html">
+  <meta name="description" content="昨天在做2050的时候居然在第一道签到题罚了六次时？？当时直接懵逼，把题目给小伙伴帮我重新写了一个(阿洋NB！)，之后看集训群里面才知道是换行符的锅(haoyuan学长NB！)。 查阅了一下：原链接  在Windows中, ‘\r’ 回车，回到当前行的行首，而不会换到下一行，如果接着输出的话，本行以前的内容会被逐一覆盖； ‘\n’ 换行，换到当前位置的下一行，而不会回到行首； Unix系统里，每行">
+<meta name="keywords" content="杂项">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于Windows换行符及gethar()替代">
+<meta property="og:url" content="http://www.kesisour.com/2019/04/14/关于Windows换行符以及gethar-替代的讨论/index.html">
 <meta property="og:site_name" content="小宸工作站">
-<meta property="og:description" content="描述显示在哪里？">
+<meta property="og:description" content="昨天在做2050的时候居然在第一道签到题罚了六次时？？当时直接懵逼，把题目给小伙伴帮我重新写了一个(阿洋NB！)，之后看集训群里面才知道是换行符的锅(haoyuan学长NB！)。 查阅了一下：原链接  在Windows中, ‘\r’ 回车，回到当前行的行首，而不会换到下一行，如果接着输出的话，本行以前的内容会被逐一覆盖； ‘\n’ 换行，换到当前位置的下一行，而不会回到行首； Unix系统里，每行">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-14T08:54:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小宸工作站">
-<meta name="twitter:description" content="描述显示在哪里？">
+<meta name="twitter:title" content="关于Windows换行符及gethar()替代">
+<meta name="twitter:description" content="昨天在做2050的时候居然在第一道签到题罚了六次时？？当时直接懵逼，把题目给小伙伴帮我重新写了一个(阿洋NB！)，之后看集训群里面才知道是换行符的锅(haoyuan学长NB！)。 查阅了一下：原链接  在Windows中, ‘\r’ 回车，回到当前行的行首，而不会换到下一行，如果接着输出的话，本行以前的内容会被逐一覆盖； ‘\n’ 换行，换到当前位置的下一行，而不会回到行首； Unix系统里，每行">
   
     <link rel="alternative" href="/atom.xml" title="小宸工作站" type="application/atom+xml">
   
@@ -71,40 +73,81 @@
   </div>
 </header>
     <div class="outer">
-      <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/04/10/汉诺塔/" class="archive-article-date">
-  <time datetime="2019-04-09T23:59:57.000Z" itemprop="datePublished">Apr 10</time>
+      <section id="main"><article id="post-关于Windows换行符以及gethar-替代的讨论" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/14/关于Windows换行符以及gethar-替代的讨论/" class="article-date">
+  <time datetime="2019-04-14T08:54:34.000Z" itemprop="datePublished">2019-04-14</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ACM/">ACM</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/10/汉诺塔/">汉诺塔的非递归实现</a>
+    <h1 class="article-title" itemprop="name">
+      关于Windows换行符及gethar()替代
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>昨天在做2050的时候居然在第一道签到题罚了六次时？？当时直接懵逼，把题目给小伙伴帮我重新写了一个(阿洋NB！)，之后看集训群里面才知道是换行符的锅(haoyuan学长NB！)。</p>
+<p>查阅了一下：<a href="https://www.cnblogs.com/xiaotiannet/p/3510586.html" target="_blank" rel="noopener">原链接</a></p>
+<blockquote>
+<p>在Windows中,</p>
+<p>‘\r’ 回车，回到当前行的行首，而不会换到下一行，如果接着输出的话，本行以前的内容会被逐一覆盖；</p>
+<p>‘\n’ 换行，换到当前位置的下一行，而不会回到行首；</p>
+<p>Unix系统里，每行结尾只有“&lt;换行&gt;”，即”\n”；Windows系统里面，每行结尾是“&lt;回车&gt;&lt;换行&gt;”，即“\r\n”；Mac系统里，每行结尾是“&lt;回车&gt;”，即”\r”；。一个直接后果是，Unix/Mac系统下的文件在Windows里打开的话，所有文字会变成一行；而Windows里的文件在Unix/Mac下打开的话，在每行的结尾可能会多出一个^M符号。</p>
+<p>Linux中遇到换行符(“\n”)会进行回车+换行的操作，回车符反而只会作为控制字符(“^M”)显示，不发生回车的操作。而windows中要回车符+换行符(“\r\n”)才会回车+换行，缺少一个控制符或者顺序不对都不能正确的另起一行。</p>
+</blockquote>
+<p>而杭电的判题机是Windows的，所以妄图单独用一个getchar()读掉回车符的操作就gg了。</p>
+<p>所以，尽快熟悉String的使用吧，getline()大法好啊！</p>
+<p>使用String完成循环读取字符串并挨个字符处理：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">string</span> str;</span><br><span class="line">	<span class="keyword">while</span> (getline(<span class="built_in">cin</span>, str)) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length(); i++) &#123;</span><br><span class="line">			<span class="comment">//</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>（等等…我在写这篇文章的时候突然意识到了学长的真正意思应该是使用getline()读掉换行…）</p>
 
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://www.kesisour.com/2019/04/14/关于Windows换行符以及gethar-替代的讨论/" data-id="cjugqtsqu0004s0txhro5dy42" class="article-share-link" data-share="baidu" data-title="关于Windows换行符及gethar()替代">Share</a>
+      
+
+      
+        <a href="http://www.kesisour.com/2019/04/14/关于Windows换行符以及gethar-替代的讨论/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂项/">杂项</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/04/14/2050-冰水挑战（dp思路简单总结）/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">[2050] 冰水挑战（dp思路简单总结）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2019/04/14/关于Windows换行符以及gethar-替代的讨论/" data-title="关于Windows换行符及gethar()替代" data-url="http://www.kesisour.com/2019/04/14/关于Windows换行符以及gethar-替代的讨论/"></div>
+  </section>
 </section>
       
       <aside id="sidebar">
