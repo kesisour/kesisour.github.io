@@ -253,6 +253,188 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.kesisour.work/2019/07/18/笛卡尔树及比较方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kesisour">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小宸工作站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/18/笛卡尔树及比较方法/" itemprop="url">"笛卡尔树及比较方法"</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-18T22:26:13+08:00">
+                2019-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/18/笛卡尔树及比较方法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://www.kesisour.work/2019/07/18/笛卡尔树及比较方法/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>（片头注：本文实为边学边写的学习笔记，可能存在逻辑不连贯或<del>突然顿悟</del>等现象，想获得更好的学习体验的朋友可以移步更为成熟的博文）</p>
+<h2 id="笛卡尔树定义"><a href="#笛卡尔树定义" class="headerlink" title="笛卡尔树定义"></a>笛卡尔树定义</h2><p>笛卡尔树是一个很有意思的树形结构，因为它同时满足两个性质，从key（key就是索引位置，如下图中9的key为1，3的key为2……）来看，满足二叉搜索树的特性，从value来看，满足堆的性质。<br><img src="..\images\笛卡尔树.png" alt></p>
+<h2 id="笛卡尔树的构造"><a href="#笛卡尔树的构造" class="headerlink" title="笛卡尔树的构造"></a>笛卡尔树的构造</h2><ol>
+<li><p>从第一个元素开始，从左往右遍历数组L</p>
+</li>
+<li><p>将元素L[0]作为树的根节点R</p>
+</li>
+<li><p>for i in [a[1], a[2]…a[n]]</p>
+</li>
+<li><p>如果a[i]小于根节点R，则将a[i]作为根节点R的父节点</p>
+</li>
+<li><p>如果a[i]大于根节点R，则将a[i]从根节点的右节点开始寻找位置</p>
+</li>
+<li><p>从右寻找的逻辑同根节点的对比方法</p>
+</li>
+</ol>
+<p>下面是具体的构造code：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node_s</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">node_s</span>* <span class="title">l</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">node_s</span>* <span class="title">r</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">node_s</span>* <span class="title">p</span>;</span></span><br><span class="line">	<span class="keyword">int</span> v;</span><br><span class="line">&#125;<span class="keyword">node_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">tree_s</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">node_t</span>* root;</span><br><span class="line">&#125;<span class="keyword">tree_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">node_t</span>* node_create(<span class="keyword">node_t</span>* p, <span class="keyword">int</span> v)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">node_t</span>* n = (<span class="keyword">node_t</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">node_t</span>));</span><br><span class="line">	<span class="built_in">memset</span>(n, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">node_t</span>));</span><br><span class="line">	n-&gt;v = v;</span><br><span class="line">	n-&gt;p = p;</span><br><span class="line">	<span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">tree_t</span>* tree_create()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">tree_t</span>* t = (<span class="keyword">tree_t</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">tree_t</span>));</span><br><span class="line">	<span class="built_in">memset</span>(t, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">tree_t</span>));</span><br><span class="line">	<span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tree_insert_n</span><span class="params">(<span class="keyword">node_t</span>* root, <span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//当前节点比根节点小，则转换为根节点</span></span><br><span class="line">	<span class="keyword">if</span> (v &lt; root-&gt;v) &#123;</span><br><span class="line">		<span class="keyword">node_t</span>* n = node_create(root-&gt;p, v);</span><br><span class="line">		root-&gt;p-&gt;r = n;</span><br><span class="line">		root-&gt;p = n;</span><br><span class="line">		n-&gt;l = root;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">//如果右子树不存在，直接放置</span></span><br><span class="line">		<span class="keyword">if</span> (root-&gt;r == <span class="number">0</span>) &#123;</span><br><span class="line">			root-&gt;r = node_create(root, v);</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//当前的节点比根节点大，则从根节点的右子树开始查找</span></span><br><span class="line">		tree_insert_n(root-&gt;r, v);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tree_insert</span><span class="params">(<span class="keyword">tree_t</span>* t, <span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (t-&gt;root == <span class="number">0</span>) &#123;</span><br><span class="line">		t-&gt;root = node_create(<span class="number">0</span>, v);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//当前节点比根节点小，则转换为根节点</span></span><br><span class="line">	<span class="keyword">if</span> (v &lt; t-&gt;root-&gt;v) &#123;</span><br><span class="line">		<span class="keyword">node_t</span>* n = node_create(<span class="number">0</span>, v);</span><br><span class="line">		t-&gt;root-&gt;p = n;</span><br><span class="line">		n-&gt;l = t-&gt;root;</span><br><span class="line">		t-&gt;root = n;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">//如果右子树不存在，直接放置</span></span><br><span class="line">		<span class="keyword">if</span> (t-&gt;root-&gt;r == <span class="number">0</span>) &#123;</span><br><span class="line">			t-&gt;root-&gt;r = node_create(t-&gt;root, v);</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//当前的节点比根节点大，则从根节点的右子树开始查找</span></span><br><span class="line">		tree_insert_n(t-&gt;root-&gt;r, v);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tree_print_n</span><span class="params">(<span class="keyword">node_t</span>* n, <span class="keyword">int</span> level, <span class="keyword">char</span> dir)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (!n) &#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; level; ++i) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"---"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%c--%d\n"</span>, dir, n-&gt;v);</span><br><span class="line">	tree_print_n(n-&gt;l, level + <span class="number">1</span>, <span class="string">'L'</span>);</span><br><span class="line">	tree_print_n(n-&gt;r, level + <span class="number">1</span>, <span class="string">'R'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tree_print</span><span class="params">(<span class="keyword">tree_t</span>* tree)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	tree_print_n(tree-&gt;root, <span class="number">0</span>, <span class="string">'C'</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tree_free</span><span class="params">(<span class="keyword">tree_t</span>* t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n, height;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n), n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> arr[n];</span><br><span class="line"></span><br><span class="line">		<span class="keyword">tree_t</span>* tree = tree_create();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;arr[i]);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			tree_insert(tree, arr[i]);</span><br><span class="line">			tree_print(tree);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		tree_free(tree);</span><br><span class="line"></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>(当然这个不是重点~需要用的时候自取就好啦~)<br>(<del>我连看都没看直接从别的地方粘贴过来了</del>)</p>
+<h2 id="笛卡尔树的应用"><a href="#笛卡尔树的应用" class="headerlink" title="笛卡尔树的应用"></a>笛卡尔树的应用</h2><p>好了接下来切入正题，为什么我今天就跟笛卡尔树过不去了，原因在于下面这道题(来源：2019牛客暑期多校训练营（第一场）A题)：</p>
+<blockquote>
+<p><img src="..\images\Equivalent_Prefixes.png" alt><br><del>这题害我今天下午的训练只做了一道签到题</del>这真是道好题啊</p>
+</blockquote>
+<p><strong>Sample Input&amp;&amp;Output</strong></p>
+<blockquote>
+<p>Sample Input<br>2<br>1 2<br>2 1<br>3<br>2 1 3<br>3 1 2<br>5<br>3 1 5 2 4<br>5 2 4 3 1</p>
+</blockquote>
+<blockquote>
+<p>Sample Output:<br>1<br>3<br>4</p>
+</blockquote>
+<p>从赛后题解看到，这题中<strong>两个数组equivalent等价于两个数组构成的笛卡尔树形状相同</strong>，所以剩下的事就简单了，比较两个数组的笛卡尔树是否相同即可<del>真的简单吗？？？喂！</del><br>下面粘一位大佬的题解：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> numm ch-48</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pd putchar(<span class="meta-string">' '</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pn putchar(<span class="meta-string">'\n'</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fi first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> se second</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fre1 freopen(<span class="meta-string">"1.txt"</span>,<span class="meta-string">"r"</span>,stdin)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fre2 freopen(<span class="meta-string">"2.txt"</span>,<span class="meta-string">"w"</span>,stdout)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">read</span><span class="params">(T&amp; res)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">bool</span> flag = <span class="literal">false</span>; <span class="keyword">char</span> ch;</span><br><span class="line">	<span class="keyword">while</span> (!<span class="built_in">isdigit</span>(ch = getchar())) (ch == <span class="string">'-'</span>) &amp;&amp; (flag = <span class="literal">true</span>);</span><br><span class="line">	<span class="keyword">for</span> (res = numm; <span class="built_in">isdigit</span>(ch = getchar()); res = (res &lt;&lt; <span class="number">1</span>) + (res &lt;&lt; <span class="number">3</span>) + numm);</span><br><span class="line">	flag &amp;&amp; (res = -res);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(T x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (x &lt; <span class="number">0</span>) <span class="built_in">putchar</span>(<span class="string">'-'</span>), x = -x;</span><br><span class="line">	<span class="keyword">if</span> (x &gt; <span class="number">9</span>) write(x / <span class="number">10</span>);</span><br><span class="line">	<span class="built_in">putchar</span>(x % <span class="number">10</span> + <span class="string">'0'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxm = <span class="number">8000010</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x7fffffff</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[maxn], b[maxn];</span><br><span class="line"><span class="keyword">int</span> MinPosA[maxn], MinA;</span><br><span class="line"><span class="keyword">int</span> MinPosB[maxn], MinB;</span><br><span class="line"><span class="keyword">int</span> q1[maxn], q2[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n) != EOF) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">			read(a[i]);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">			read(b[i]);</span><br><span class="line">		<span class="keyword">int</span> head1 = <span class="number">1</span>, tail1 = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> head2 = <span class="number">1</span>, tail2 = <span class="number">1</span>;</span><br><span class="line">		q1[head1] = q2[head1] = inf;</span><br><span class="line">		<span class="keyword">int</span> pos = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">			<span class="keyword">while</span> (head1 &lt;= tail1 &amp;&amp; q1[tail1] &gt; a[i]) tail1--;</span><br><span class="line">			<span class="keyword">while</span> (head2 &lt;= tail2 &amp;&amp; q2[tail2] &gt; b[i]) tail2--;</span><br><span class="line">			<span class="keyword">if</span> (tail1 != tail2) <span class="keyword">break</span>;</span><br><span class="line">			q1[++tail1] = a[i], q2[++tail2] = b[i];</span><br><span class="line">			pos = i;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		write(pos); pn;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面的题解通过不断遍历比较笛卡尔树的最右路径来判断笛卡尔树的构造，经实测可行，或许下面这种解释更容易懂<del>虽然我没看懂233333</del><br><img src="..\images\Equivalent_Prefixes题解.png" alt><br>就这样吧…这文估计没有人能看明白，我真的好菜啊55555</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.kesisour.work/2019/07/18/C++大数板子/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -366,188 +548,6 @@
 <blockquote>
 <p>Sample Output:<br>2<br>0</p>
 </blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.kesisour.work/2019/07/18/笛卡尔树及比较方法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="kesisour">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小宸工作站">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/18/笛卡尔树及比较方法/" itemprop="url">"笛卡尔树及比较方法"</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-18T12:26:13+08:00">
-                2019-07-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM/" itemprop="url" rel="index">
-                    <span itemprop="name">ACM</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/07/18/笛卡尔树及比较方法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="http://www.kesisour.work/2019/07/18/笛卡尔树及比较方法/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>（片头注：本文实为边学边写的学习笔记，可能存在逻辑不连贯或<del>突然顿悟</del>等现象，想获得更好的学习体验的朋友可以移步更为成熟的博文）</p>
-<h2 id="笛卡尔树定义"><a href="#笛卡尔树定义" class="headerlink" title="笛卡尔树定义"></a>笛卡尔树定义</h2><p>笛卡尔树是一个很有意思的树形结构，因为它同时满足两个性质，从key（key就是索引位置，如下图中9的key为1，3的key为2……）来看，满足二叉搜索树的特性，从value来看，满足堆的性质。<br><img src="..\images\笛卡尔树.png" alt></p>
-<h2 id="笛卡尔树的构造"><a href="#笛卡尔树的构造" class="headerlink" title="笛卡尔树的构造"></a>笛卡尔树的构造</h2><ol>
-<li><p>从第一个元素开始，从左往右遍历数组L</p>
-</li>
-<li><p>将元素L[0]作为树的根节点R</p>
-</li>
-<li><p>for i in [a[1], a[2]…a[n]]</p>
-</li>
-<li><p>如果a[i]小于根节点R，则将a[i]作为根节点R的父节点</p>
-</li>
-<li><p>如果a[i]大于根节点R，则将a[i]从根节点的右节点开始寻找位置</p>
-</li>
-<li><p>从右寻找的逻辑同根节点的对比方法</p>
-</li>
-</ol>
-<p>下面是具体的构造code：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node_s</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">node_s</span>* <span class="title">l</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">node_s</span>* <span class="title">r</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">node_s</span>* <span class="title">p</span>;</span></span><br><span class="line">	<span class="keyword">int</span> v;</span><br><span class="line">&#125;<span class="keyword">node_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">tree_s</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">node_t</span>* root;</span><br><span class="line">&#125;<span class="keyword">tree_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">node_t</span>* node_create(<span class="keyword">node_t</span>* p, <span class="keyword">int</span> v)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">node_t</span>* n = (<span class="keyword">node_t</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">node_t</span>));</span><br><span class="line">	<span class="built_in">memset</span>(n, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">node_t</span>));</span><br><span class="line">	n-&gt;v = v;</span><br><span class="line">	n-&gt;p = p;</span><br><span class="line">	<span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">tree_t</span>* tree_create()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">tree_t</span>* t = (<span class="keyword">tree_t</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">tree_t</span>));</span><br><span class="line">	<span class="built_in">memset</span>(t, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">tree_t</span>));</span><br><span class="line">	<span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tree_insert_n</span><span class="params">(<span class="keyword">node_t</span>* root, <span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//当前节点比根节点小，则转换为根节点</span></span><br><span class="line">	<span class="keyword">if</span> (v &lt; root-&gt;v) &#123;</span><br><span class="line">		<span class="keyword">node_t</span>* n = node_create(root-&gt;p, v);</span><br><span class="line">		root-&gt;p-&gt;r = n;</span><br><span class="line">		root-&gt;p = n;</span><br><span class="line">		n-&gt;l = root;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">//如果右子树不存在，直接放置</span></span><br><span class="line">		<span class="keyword">if</span> (root-&gt;r == <span class="number">0</span>) &#123;</span><br><span class="line">			root-&gt;r = node_create(root, v);</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//当前的节点比根节点大，则从根节点的右子树开始查找</span></span><br><span class="line">		tree_insert_n(root-&gt;r, v);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tree_insert</span><span class="params">(<span class="keyword">tree_t</span>* t, <span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (t-&gt;root == <span class="number">0</span>) &#123;</span><br><span class="line">		t-&gt;root = node_create(<span class="number">0</span>, v);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//当前节点比根节点小，则转换为根节点</span></span><br><span class="line">	<span class="keyword">if</span> (v &lt; t-&gt;root-&gt;v) &#123;</span><br><span class="line">		<span class="keyword">node_t</span>* n = node_create(<span class="number">0</span>, v);</span><br><span class="line">		t-&gt;root-&gt;p = n;</span><br><span class="line">		n-&gt;l = t-&gt;root;</span><br><span class="line">		t-&gt;root = n;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">//如果右子树不存在，直接放置</span></span><br><span class="line">		<span class="keyword">if</span> (t-&gt;root-&gt;r == <span class="number">0</span>) &#123;</span><br><span class="line">			t-&gt;root-&gt;r = node_create(t-&gt;root, v);</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//当前的节点比根节点大，则从根节点的右子树开始查找</span></span><br><span class="line">		tree_insert_n(t-&gt;root-&gt;r, v);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tree_print_n</span><span class="params">(<span class="keyword">node_t</span>* n, <span class="keyword">int</span> level, <span class="keyword">char</span> dir)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (!n) &#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; level; ++i) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"---"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%c--%d\n"</span>, dir, n-&gt;v);</span><br><span class="line">	tree_print_n(n-&gt;l, level + <span class="number">1</span>, <span class="string">'L'</span>);</span><br><span class="line">	tree_print_n(n-&gt;r, level + <span class="number">1</span>, <span class="string">'R'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tree_print</span><span class="params">(<span class="keyword">tree_t</span>* tree)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	tree_print_n(tree-&gt;root, <span class="number">0</span>, <span class="string">'C'</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tree_free</span><span class="params">(<span class="keyword">tree_t</span>* t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n, height;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n), n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> arr[n];</span><br><span class="line"></span><br><span class="line">		<span class="keyword">tree_t</span>* tree = tree_create();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;arr[i]);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			tree_insert(tree, arr[i]);</span><br><span class="line">			tree_print(tree);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		tree_free(tree);</span><br><span class="line"></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>(当然这个不是重点~需要用的时候自取就好啦~)<br>(<del>我连看都没看直接从别的地方粘贴过来了</del>)</p>
-<h2 id="笛卡尔树的应用"><a href="#笛卡尔树的应用" class="headerlink" title="笛卡尔树的应用"></a>笛卡尔树的应用</h2><p>好了接下来切入正题，为什么我今天就跟笛卡尔树过不去了，原因在于下面这道题(来源：2019牛客暑期多校训练营（第一场）A题)：</p>
-<blockquote>
-<p><img src="..\images\Equivalent_Prefixes.png" alt><br><del>这题害我今天下午的训练只做了一道签到题</del>这真是道好题啊</p>
-</blockquote>
-<p><strong>Sample Input&amp;&amp;Output</strong></p>
-<blockquote>
-<p>Sample Input<br>2<br>1 2<br>2 1<br>3<br>2 1 3<br>3 1 2<br>5<br>3 1 5 2 4<br>5 2 4 3 1</p>
-</blockquote>
-<blockquote>
-<p>Sample Output:<br>1<br>3<br>4</p>
-</blockquote>
-<p>从赛后题解看到，这题中<strong>两个数组equivalent等价于两个数组构成的笛卡尔树形状相同</strong>，所以剩下的事就简单了，比较两个数组的笛卡尔树是否相同即可<del>真的简单吗？？？喂！</del><br>下面粘一位大佬的题解：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> numm ch-48</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pd putchar(<span class="meta-string">' '</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pn putchar(<span class="meta-string">'\n'</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fi first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> se second</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fre1 freopen(<span class="meta-string">"1.txt"</span>,<span class="meta-string">"r"</span>,stdin)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fre2 freopen(<span class="meta-string">"2.txt"</span>,<span class="meta-string">"w"</span>,stdout)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">read</span><span class="params">(T&amp; res)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">bool</span> flag = <span class="literal">false</span>; <span class="keyword">char</span> ch;</span><br><span class="line">	<span class="keyword">while</span> (!<span class="built_in">isdigit</span>(ch = getchar())) (ch == <span class="string">'-'</span>) &amp;&amp; (flag = <span class="literal">true</span>);</span><br><span class="line">	<span class="keyword">for</span> (res = numm; <span class="built_in">isdigit</span>(ch = getchar()); res = (res &lt;&lt; <span class="number">1</span>) + (res &lt;&lt; <span class="number">3</span>) + numm);</span><br><span class="line">	flag &amp;&amp; (res = -res);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(T x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (x &lt; <span class="number">0</span>) <span class="built_in">putchar</span>(<span class="string">'-'</span>), x = -x;</span><br><span class="line">	<span class="keyword">if</span> (x &gt; <span class="number">9</span>) write(x / <span class="number">10</span>);</span><br><span class="line">	<span class="built_in">putchar</span>(x % <span class="number">10</span> + <span class="string">'0'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxm = <span class="number">8000010</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x7fffffff</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[maxn], b[maxn];</span><br><span class="line"><span class="keyword">int</span> MinPosA[maxn], MinA;</span><br><span class="line"><span class="keyword">int</span> MinPosB[maxn], MinB;</span><br><span class="line"><span class="keyword">int</span> q1[maxn], q2[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n) != EOF) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">			read(a[i]);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">			read(b[i]);</span><br><span class="line">		<span class="keyword">int</span> head1 = <span class="number">1</span>, tail1 = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> head2 = <span class="number">1</span>, tail2 = <span class="number">1</span>;</span><br><span class="line">		q1[head1] = q2[head1] = inf;</span><br><span class="line">		<span class="keyword">int</span> pos = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">			<span class="keyword">while</span> (head1 &lt;= tail1 &amp;&amp; q1[tail1] &gt; a[i]) tail1--;</span><br><span class="line">			<span class="keyword">while</span> (head2 &lt;= tail2 &amp;&amp; q2[tail2] &gt; b[i]) tail2--;</span><br><span class="line">			<span class="keyword">if</span> (tail1 != tail2) <span class="keyword">break</span>;</span><br><span class="line">			q1[++tail1] = a[i], q2[++tail2] = b[i];</span><br><span class="line">			pos = i;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		write(pos); pn;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>上面的题解通过不断遍历比较笛卡尔树的最右路径来判断笛卡尔树的构造，经实测可行，或许下面这种解释更容易懂<del>虽然我没看懂233333</del><br><img src="..\images\Equivalent_Prefixes题解.png" alt><br>就这样吧…这文估计没有人能看明白，我真的好菜啊55555</p>
 
           
         
