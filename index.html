@@ -82,16 +82,16 @@
 
 
 
-<meta name="description" content="描述显示在哪里？">
+<meta name="description" content="可持续化柠檬树参上！">
 <meta property="og:type" content="website">
 <meta property="og:title" content="小宸工作站">
 <meta property="og:url" content="http://www.kesisour.work/index.html">
 <meta property="og:site_name" content="小宸工作站">
-<meta property="og:description" content="描述显示在哪里？">
+<meta property="og:description" content="可持续化柠檬树参上！">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小宸工作站">
-<meta name="twitter:description" content="描述显示在哪里？">
+<meta name="twitter:description" content="可持续化柠檬树参上！">
 
 
 
@@ -181,7 +181,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">纪录所有不应遗忘的。</p>
+        <p class="site-subtitle">莎士比亚应葬于此。</p>
       
   </div>
 
@@ -271,6 +271,273 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.kesisour.work/2019/07/25/Python-for-Data-Science(1)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kesisour">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小宸工作站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/25/Python-for-Data-Science(1)/" itemprop="url">"Python for Data Science(1)"</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-25T23:03:29+08:00">
+                2019-07-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/data-science/" itemprop="url" rel="index">
+                    <span itemprop="name">data science</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/25/Python-for-Data-Science(1)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://www.kesisour.work/2019/07/25/Python-for-Data-Science(1)/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>好的我又来挖坑了嘿嘿 <del>喂喂你说好的更新数据结构呢？主席树啥时候能出来啊</del></p>
+<p>本文是基于 Kaggle 上的 Python 在数据科学里面的应用入门课的<strong>学习笔记性质的博文</strong>，实际写作过程也是一边学一边写的，所以有所偏颇或遗漏的地方欢迎评论指正<del>喂喂你给你的blog载入评论模块了嘛</del><br>由于我是具有一定编程基础的，所以并不会过多的介绍 code 逻辑思想，本文可能更适合已经掌握至少一门编程语言的读者。</p>
+<h2 id="1-Numbers-and-arithmetic-in-Python"><a href="#1-Numbers-and-arithmetic-in-Python" class="headerlink" title="1. Numbers and arithmetic in Python"></a>1. Numbers and arithmetic in Python</h2><h3 id="基础操作符"><a href="#基础操作符" class="headerlink" title="基础操作符"></a>基础操作符</h3><table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a + b</code></td>
+<td>Addition</td>
+<td>Sum of <code>a</code> and <code>b</code></td>
+</tr>
+<tr>
+<td><code>a - b</code></td>
+<td>Subtraction</td>
+<td>Difference of <code>a</code> and <code>b</code></td>
+</tr>
+<tr>
+<td><code>a * b</code></td>
+<td>Multiplication</td>
+<td>Product of <code>a</code> and <code>b</code></td>
+</tr>
+<tr>
+<td><code>a / b</code></td>
+<td>True division</td>
+<td>Quotient of <code>a</code> and <code>b</code></td>
+</tr>
+<tr>
+<td><code>a // b</code></td>
+<td>Floor division</td>
+<td>Quotient of <code>a</code> and <code>b</code>, removing fractional parts</td>
+</tr>
+<tr>
+<td><code>a % b</code></td>
+<td>Modulus</td>
+<td>Integer remainder after division of <code>a</code> by <code>b</code></td>
+</tr>
+<tr>
+<td><code>a ** b</code></td>
+<td>Exponentiation</td>
+<td><code>a</code> raised to the power of <code>b</code></td>
+</tr>
+<tr>
+<td><code>-a</code></td>
+<td>Negation</td>
+<td>The negative of <code>a</code></td>
+</tr>
+</tbody>
+</table>
+<p>基本都跟 c++ 类似哈，唯一不同的就是这个 / 和 // ，其中 // 是 floor vivision(即与 c++ 中的 / 一致，抹去小数位)，而 / 是 ture division(保留小数位)。</p>
+<h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips:"></a>Tips:</h3><p><code>abs(num)</code>是求 num 的绝对值，对 int 和 float 生效</p>
+<p><code>int(&#39;807&#39;)</code>是转换数据类型(必须严格遵守格式，如果int(‘1.2’)则会报错)</p>
+<p>简单介绍一下Python中的数据类型：</p>
+<blockquote>
+<p>Python3 中有六个标准的数据类型：</p>
+<p>Number（数字）<br>String（字符串）<br>List（列表）<br>Tuple（元组）<br>Set（集合）<br>Dictionary（字典）</p>
+<p>Python3 的六个标准数据类型中：</p>
+<p>不可变数据（3 个）：Number（数字）、String（字符串）、Tuple（元组）；<br>可变数据（3 个）：List（列表）、Dictionary（字典）、Set（集合）。</p>
+</blockquote>
+<h2 id="2-Functions-and-Getting-Help"><a href="#2-Functions-and-Getting-Help" class="headerlink" title="2. Functions and Getting Help"></a>2. Functions and Getting Help</h2><h3 id="def创建函数"><a href="#def创建函数" class="headerlink" title="def创建函数"></a>def创建函数</h3><p>先来演示一下Python怎么创建函数；</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 无参无返回值</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_kesisour</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"kesisour"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 无参有返回值</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">return_kesisour</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"kesisour"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 有参无返回值</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_name</span><span class="params">(name)</span>:</span></span><br><span class="line">    print(name)</span><br></pre></td></tr></table></figure>
+<p>上面利用<code>def</code>关键字创建了三个最基本的函数，函数在无返回的时候返回值为<code>None</code>(This is similar to the concept of “null” in other languages.)</p>
+<h3 id="Getting-Help"><a href="#Getting-Help" class="headerlink" title="Getting Help"></a>Getting Help</h3><p>Python里面内置了一个非常人性化的函数<code>help</code>，用它可以查看函数的函数头，撰写了docstring的函数还可以显示docstring，赶紧来实战一下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 我 问 我 自 己</span></span><br><span class="line">help(help)</span><br></pre></td></tr></table></figure>
+<p>output(以后默认code后面的即为输出，不再标志):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Help on _Helper in module _sitebuiltins object:</span><br><span class="line"></span><br><span class="line">class _Helper(builtins.object)</span><br><span class="line"> |  Define the builtin &apos;help&apos;.</span><br><span class="line"> |  </span><br><span class="line"> |  This is a wrapper around pydoc.help that provides a helpful message</span><br><span class="line"> |  when &apos;help&apos; is typed at the Python interactive prompt.</span><br><span class="line"> |  </span><br><span class="line"> |  Calling help() at the Python prompt starts an interactive help session.</span><br><span class="line"> |  Calling help(thing) prints help for the python object &apos;thing&apos;.</span><br><span class="line"> |  </span><br><span class="line"> |  Methods defined here:</span><br><span class="line"> |  </span><br><span class="line"> |  __call__(self, *args, **kwds)</span><br><span class="line"> |      Call self as a function.</span><br><span class="line"> |  </span><br><span class="line"> |  __repr__(self)</span><br><span class="line"> |      Return repr(self).</span><br><span class="line"> |  </span><br><span class="line"> |  ----------------------------------------------------------------------</span><br><span class="line"> |  Data descriptors defined here:</span><br><span class="line"> |  </span><br><span class="line"> |  __dict__</span><br><span class="line"> |      dictionary for instance variables (if defined)</span><br><span class="line"> |  </span><br><span class="line"> |  __weakref__</span><br><span class="line"> |      list of weak references to the object (if defined)</span><br></pre></td></tr></table></figure></p>
+<p>好了我用上面这个例子除了演示一下<code>help</code>的用法之外，也是为了证明一件事，<code>help</code>本身也是一个函数。有关<code>help</code>的用法在这里也不再演示了，读者可以在日常使用过程中自行尝试。</p>
+<h3 id="Default-arguments"><a href="#Default-arguments" class="headerlink" title="Default arguments"></a>Default arguments</h3><p>首先我们来<code>help(print)</code>看一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Help on built-in function print in module builtins:</span><br><span class="line"></span><br><span class="line">print(...)</span><br><span class="line">    print(value, ..., sep=&apos; &apos;, end=&apos;\n&apos;, file=sys.stdout, flush=False)</span><br><span class="line">    </span><br><span class="line">    Prints the values to a stream, or to sys.stdout by default.</span><br><span class="line">    Optional keyword arguments:</span><br><span class="line">    file:  a file-like object (stream); defaults to the current sys.stdout.</span><br><span class="line">    sep:   string inserted between values, default a space.</span><br><span class="line">    end:   string appended after the last value, default a newline.</span><br><span class="line">    flush: whether to forcibly flush the stream.</span><br></pre></td></tr></table></figure></p>
+<p>发现了吗？print除了传入的变量之外，还有四个内置的参数，如果不设置他们的值，他们的值就是默认的，这种就称为 default arguments(默认参数)</p>
+<p>来看一下用法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">print(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, sep = <span class="string">"&lt;"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1 2 3</span><br><span class="line">1&lt;2&lt;3</span><br></pre></td></tr></table></figure>
+<p><code>sep</code>默认为空格，但如果自行定义的话，则会覆盖掉原本的空格。</p>
+<p>如何在自己设置的函数中创建default arguments：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">greet</span><span class="params">(who=<span class="string">"Colin"</span>)</span>:</span></span><br><span class="line">    print(<span class="string">"Hello,"</span>, who)</span><br><span class="line">    </span><br><span class="line">greet()</span><br><span class="line">greet(who=<span class="string">"Kaggle"</span>)</span><br><span class="line"><span class="comment"># (In this case, we don't need to specify the name of the argument, because it's unambiguous.)</span></span><br><span class="line">greet(<span class="string">"world"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Hello, Colin</span><br><span class="line">Hello, Kaggle</span><br><span class="line">Hello, world</span><br></pre></td></tr></table></figure>
+<h3 id="Functions-Applied-to-Functions"><a href="#Functions-Applied-to-Functions" class="headerlink" title="Functions Applied to Functions"></a>Functions Applied to Functions</h3><p>Higher order functions 使用演示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">def mult_by_five(x):</span><br><span class="line">    return 5 * x</span><br><span class="line"></span><br><span class="line">def call(fn, arg):</span><br><span class="line">    &quot;&quot;&quot;Call fn on arg&quot;&quot;&quot;</span><br><span class="line">    return fn(arg)</span><br><span class="line"></span><br><span class="line">def squared_call(fn, arg):</span><br><span class="line">    &quot;&quot;&quot;Call fn on the result of calling fn on arg&quot;&quot;&quot;</span><br><span class="line">    return fn(fn(arg))</span><br><span class="line"></span><br><span class="line">print(</span><br><span class="line">    call(mult_by_five, 1),</span><br><span class="line">    squared_call(mult_by_five, 1), </span><br><span class="line">    sep=&apos;\n&apos;, # &apos;\n&apos; is the newline character - it starts a new line</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">25</span><br></pre></td></tr></table></figure>
+<p>这对于有编程基础的读者来说非常简单吧，只需要记一下写法即可，接下来来演示一个有意思的东西：<br>先来看一下<code>help(max)</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Help on built-in function max in module builtins:</span><br><span class="line"></span><br><span class="line">max(...)</span><br><span class="line">    max(iterable, *[, default=obj, key=func]) -&gt; value</span><br><span class="line">    max(arg1, arg2, *args, *[, key=func]) -&gt; value</span><br><span class="line">    </span><br><span class="line">    With a single iterable argument, return its biggest item. The</span><br><span class="line">    default keyword-only argument specifies an object to return if</span><br><span class="line">    the provided iterable is empty.</span><br><span class="line">    With two or more arguments, return the largest argument.</span><br></pre></td></tr></table></figure></p>
+<p>有一个<code>key</code>关键字，可以自己定义：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mod_5</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="string">"""Return the remainder of x after dividing by 5"""</span></span><br><span class="line">    <span class="keyword">return</span> x % <span class="number">5</span></span><br><span class="line"></span><br><span class="line">print(</span><br><span class="line">    <span class="string">'Which number is biggest?'</span>,</span><br><span class="line">    max(<span class="number">100</span>, <span class="number">51</span>, <span class="number">14</span>),</span><br><span class="line">    <span class="string">'Which number is the biggest modulo 5?'</span>,</span><br><span class="line">    max(<span class="number">100</span>, <span class="number">51</span>, <span class="number">14</span>, key=mod_5),</span><br><span class="line">    sep=<span class="string">'\n'</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Which number is biggest?</span><br><span class="line">100</span><br><span class="line">Which number is the biggest modulo 5?</span><br><span class="line">14</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -1904,7 +2171,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">kesisour</p>
-              <p class="site-description motion-element" itemprop="description">描述显示在哪里？</p>
+              <p class="site-description motion-element" itemprop="description">可持续化柠檬树参上！</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -1914,7 +2181,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1925,7 +2192,7 @@
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">categories</span>
                 
               </div>
@@ -1936,7 +2203,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -1987,7 +2254,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">7.1k</span>
+    <span title="Site words total count">8.3k</span>
   
 </div>
 
@@ -2006,6 +2273,26 @@
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
 
 
 
@@ -2047,6 +2334,8 @@
   
 
 
+  
+
 
 
 
@@ -2087,6 +2376,11 @@
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
 
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
 
   
 
@@ -2121,6 +2415,14 @@
 
   
 
+    
+      <script id="dsq-count-scr" src="https://kesisour.disqus.com/count.js" async></script>
+    
+
+    
+
+  
+
 
 
 
@@ -2133,10 +2435,6 @@
   
 
 
-
-
-
-  
 
 
 
