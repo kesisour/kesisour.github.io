@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="主席树,线段树,">
 
 
 
@@ -82,16 +82,18 @@
 
 
 
-<meta name="description" content="可持续化柠檬树参上！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小宸工作站">
-<meta property="og:url" content="http://www.kesisour.work/archives/index.html">
+<meta name="description" content="好了我终于又想起来我是一名辣鸡ACMer了，今天来继续更新数据结构。 主席树(presistent segment tree)，又名可持久化线段树、动态开点线段树、权值线段树、可持久化柠檬树 要想搞明白这是个啥，我给你提供oi-wiki链接，反正我是觉得我说不明白这么复杂的玩意。 先惯例上版子： 123456789101112131415161718192021222324252627282930">
+<meta name="keywords" content="主席树,线段树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="&quot;主席树(再探线段树)&quot;">
+<meta property="og:url" content="http://www.kesisour.work/2019/07/26/主席树-再探线段树/index.html">
 <meta property="og:site_name" content="小宸工作站">
-<meta property="og:description" content="可持续化柠檬树参上！">
+<meta property="og:description" content="好了我终于又想起来我是一名辣鸡ACMer了，今天来继续更新数据结构。 主席树(presistent segment tree)，又名可持久化线段树、动态开点线段树、权值线段树、可持久化柠檬树 要想搞明白这是个啥，我给你提供oi-wiki链接，反正我是觉得我说不明白这么复杂的玩意。 先惯例上版子： 123456789101112131415161718192021222324252627282930">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-26T07:11:23.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小宸工作站">
-<meta name="twitter:description" content="可持续化柠檬树参上！">
+<meta name="twitter:title" content="&quot;主席树(再探线段树)&quot;">
+<meta name="twitter:description" content="好了我终于又想起来我是一名辣鸡ACMer了，今天来继续更新数据结构。 主席树(presistent segment tree)，又名可持久化线段树、动态开点线段树、权值线段树、可持久化柠檬树 要想搞明白这是个啥，我给你提供oi-wiki链接，反正我是觉得我说不明白这么复杂的玩意。 先惯例上版子： 123456789101112131415161718192021222324252627282930">
 
 
 
@@ -121,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://www.kesisour.work/archives/">
+  <link rel="canonical" href="http://www.kesisour.work/2019/07/26/主席树-再探线段树/">
 
 
 
 
 
-  <title>Archive | 小宸工作站</title>
+  <title>"主席树(再探线段树)" | 小宸工作站</title>
   
 <script>
   window.fbAsyncInit = function() {
@@ -164,7 +166,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -270,391 +272,246 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.kesisour.work/2019/07/26/主席树-再探线段树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kesisour">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小宸工作站">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">"主席树(再探线段树)"</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-26T15:11:23+08:00">
+                2019-07-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        Um..! 11 posts in total. Keep on posting.
-      </span>
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/26/主席树-再探线段树/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://www.kesisour.work/2019/07/26/主席树-再探线段树/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  609
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
-        
-        
-        
+      
+        <p>好了我终于又想起来我是一名辣鸡ACMer了，今天来继续更新数据结构。</p>
+<p>主席树(presistent segment tree)，又名可持久化线段树、动态开点线段树、权值线段树、<del>可持久化柠檬树</del></p>
+<p>要想搞明白这是个啥，我给你提供<a href="https://oi-wiki.org/ds/persistent-seg/" target="_blank" rel="noopener">oi-wiki链接</a>，反正我是觉得我说不明白这么复杂的玩意。</p>
+<p>先惯例上版子：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> numm ch-48</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pd putchar(<span class="meta-string">' '</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pn putchar(<span class="meta-string">'\n'</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fi first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> se second</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mid (l + r) &gt;&gt; 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fre1 freopen(<span class="meta-string">"1.txt"</span>,<span class="meta-string">"r"</span>,stdin)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fre2 freopen(<span class="meta-string">"2.txt"</span>,<span class="meta-string">"w"</span>,stdout)</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> ll;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">read</span><span class="params">(T&amp; res)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">bool</span> flag = <span class="literal">false</span>; <span class="keyword">char</span> ch;</span><br><span class="line">	<span class="keyword">while</span> (!<span class="built_in">isdigit</span>(ch = getchar())) (ch == <span class="string">'-'</span>) &amp;&amp; (flag = <span class="literal">true</span>);</span><br><span class="line">	<span class="keyword">for</span> (res = numm; <span class="built_in">isdigit</span>(ch = getchar()); res = (res &lt;&lt; <span class="number">1</span>) + (res &lt;&lt; <span class="number">3</span>) + numm);</span><br><span class="line">	flag &amp;&amp; (res = -res);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(T x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (x &lt; <span class="number">0</span>) <span class="built_in">putchar</span>(<span class="string">'-'</span>), x = -x;</span><br><span class="line">	<span class="keyword">if</span> (x &gt; <span class="number">9</span>) write(x / <span class="number">10</span>);</span><br><span class="line">	<span class="built_in">putchar</span>(x % <span class="number">10</span> + <span class="string">'0'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">200010</span>;</span><br><span class="line"><span class="keyword">int</span> n, q, m, cnt = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> a[N], b[N], T[N];</span><br><span class="line"><span class="keyword">int</span> sum[N &lt;&lt; <span class="number">5</span>], L[N &lt;&lt; <span class="number">5</span>], R[N &lt;&lt; <span class="number">5</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">getid</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;val)</span>  <span class="comment">//离散化</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> lower_bound(b + <span class="number">1</span>, b + m + <span class="number">1</span>, val) - b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> rt = ++cnt;</span><br><span class="line">	sum[rt] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span> (l &lt; r) &#123;</span><br><span class="line">		L[rt] = build(<span class="number">1</span>, mid);</span><br><span class="line">		R[rt] = build(mid + <span class="number">1</span>, r);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> rt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> pre, <span class="keyword">int</span> l, <span class="keyword">int</span> r,<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> rt = ++cnt;</span><br><span class="line">	L[rt] = L[pre]; R[rt] = R[pre]; sum[rt] = sum[pre] + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span> (l &lt; r) &#123;</span><br><span class="line">		<span class="keyword">if</span> (x &lt;= mid) L[rt] = update(L[pre], <span class="number">1</span>, mid, x);</span><br><span class="line">		<span class="keyword">else</span> R[rt] = update(R[pre], mid + <span class="number">1</span>, r, x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> rt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (l &gt;= r) <span class="keyword">return</span> l;</span><br><span class="line">	<span class="keyword">int</span> x = sum[L[v]] - sum[L[u]];</span><br><span class="line">	<span class="keyword">if</span> (x &gt;= k) <span class="keyword">return</span> query(L[u], L[v], <span class="number">1</span>, mid, k);</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> query(R[u], R[v], mid + <span class="number">1</span>, r, k - x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	read(n); read(q);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		read(a[i]);</span><br><span class="line">		b[i] = a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	sort(b + <span class="number">1</span>, b + <span class="number">1</span> + n);</span><br><span class="line">	m = unique(b + <span class="number">1</span>, b + <span class="number">1</span> + n) - b - <span class="number">1</span>;</span><br><span class="line">	T[<span class="number">0</span>] = build(<span class="number">1</span>, m);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> t = getid(a[i]);</span><br><span class="line">		T[i] = update(T[i - <span class="number">1</span>], <span class="number">1</span>, m, t);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (q--) &#123;</span><br><span class="line">		<span class="keyword">int</span> x, y, z;</span><br><span class="line">		read(x); read(y); read(z);</span><br><span class="line">		<span class="keyword">int</span> t = query(T[x - <span class="number">1</span>], T[y], <span class="number">1</span>, m, z);</span><br><span class="line">		<span class="keyword">while</span> (b[t]); pn;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述板子是<a href="https://www.luogu.org/problemnew/show/P2617" target="_blank" rel="noopener">洛谷版子题</a>的题解。</p>
+<p>由于主席树比较复杂，我在这里简单解释一下思路，（这样我以后来粘的时候还方便一点23333）</p>
+<p><code>a[]</code>和<code>b[]</code>是来保存最初的数组的，传入值后对<code>b[]</code>进行排序去重</p>
 
-        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
+            <a href="/tags/主席树/" rel="tag"># 主席树</a>
+          
+            <a href="/tags/线段树/" rel="tag"># 线段树</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+          <div class="social-like">
+            
+
+            
+              <div class="fb_like">
+                <div class="fb-like" data-layout="button_count" data-share="true"></div>
+              </div>
+            
           </div>
         
-        
 
         
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/07/28/Python-for-Data-Science(2)/" itemprop="url">
-              
-                <span itemprop="name">"Python for Data Science(2)"</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-28T01:15:29+08:00" content="2019-07-28">
-          07-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
+        </div>
+      
       
 
-        
-        
-        
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/25/Python-for-Data-Science(1)/" rel="next" title python for data science(1)"">
+                <i class="fa fa-chevron-left"></i> "Python for Data Science(1)"
+              </a>
+            
+          </div>
 
-        
-        
+          <span class="post-nav-divider"></span>
 
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/07/26/主席树-再探线段树/" itemprop="url">
-              
-                <span itemprop="name">"主席树(再探线段树)"</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-26T15:11:23+08:00" content="2019-07-26">
-          07-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/28/Python-for-Data-Science(2)/" rel="prev" title python for data science(2)"">
+                "Python for Data Science(2)" <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/07/25/Python-for-Data-Science(1)/" itemprop="url">
-              
-                <span itemprop="name">"Python for Data Science(1)"</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-25T23:03:29+08:00" content="2019-07-25">
-          07-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/07/21/线段树初探/" itemprop="url">
-              
-                <span itemprop="name">"线段树初探"</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-21T16:00:33+08:00" content="2019-07-21">
-          07-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/07/18/笛卡尔树及比较方法/" itemprop="url">
-              
-                <span itemprop="name">"笛卡尔树及比较方法"</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-18T22:26:13+08:00" content="2019-07-18">
-          07-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/07/18/C++大数板子/" itemprop="url">
-              
-                <span itemprop="name">C++大数板子</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-18T19:28:04+08:00" content="2019-07-18">
-          07-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/14/[PTA] 练习4.2 平衡二叉树的根/" itemprop="url">
-              
-                <span itemprop="name">[PTA] 练习4.2 平衡二叉树的根</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-14T20:52:46+08:00" content="2019-04-14">
-          04-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/14/关于Windows换行符以及gethar-替代的讨论/" itemprop="url">
-              
-                <span itemprop="name">关于Windows换行符及gethar()替代</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-14T16:54:34+08:00" content="2019-04-14">
-          04-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/14/2050-冰水挑战（dp思路简单总结）/" itemprop="url">
-              
-                <span itemprop="name">[2050] 冰水挑战（dp思路简单总结）</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-14T16:21:37+08:00" content="2019-04-14">
-          04-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/10/汉诺塔/" itemprop="url">
-              
-                <span itemprop="name">汉诺塔的非递归实现</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-10T07:59:57+08:00" content="2019-04-10">
-          04-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-    </div>
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -662,6 +519,16 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div class="fb-comments" data-href="http://www.kesisour.work/2019/07/26/主席树-再探线段树/" data-numposts="10" data-width="100%" data-colorscheme="light">
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -919,6 +786,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -936,6 +807,18 @@
       <script id="dsq-count-scr" src="https://kesisour.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://www.kesisour.work/2019/07/26/主席树-再探线段树/';
+          this.page.identifier = '2019/07/26/主席树-再探线段树/';
+          this.page.title = '\"主席树(再探线段树)\"';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kesisour.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
