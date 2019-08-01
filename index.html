@@ -285,6 +285,496 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.kesisour.work/2019/07/31/15数码问题及其泛化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kesisour">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小宸工作站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/31/15数码问题及其泛化/" itemprop="url">"8数码问题及其泛化"</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-31T07:30:44+08:00">
+                2019-07-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/31/15数码问题及其泛化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://www.kesisour.work/2019/07/31/15数码问题及其泛化/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  853
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://www.cnblogs.com/wmx3ng/archive/2012/10/24/2775941.html" target="_blank" rel="noopener">(本博客思路部分基本为转载)</a></p>
+<p>先来看下题目：</p>
+<h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>You are given a 4 × 4 grid, which consists of 15 number cells and an empty cell.<br>All numbers are unique and ranged from 1 to 15.<br>In this board, the cells which are adjacent with the empty cell can move to the empty cell.<br>Your task is to make the input grid to the target grid shown in the figure below.<br>In the following example (sample input), you can get the target grid in two moves.<br><img src="/2019/07/31/15数码问题及其泛化/img.jpg"></p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>he first line contains an integer T (1 &lt;= T &lt;= 10^5) denoting the number of test cases.<br>Each test case consists of four lines each containing four space-separated integers, denoting the input grid. 0 indicates the empty cell.</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>For each test case, you have to print the answer in one line.<br>If you can’t get the target grid within 120 moves, then print ‘No’, else print ‘Yes’.</p>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><blockquote>
+<p>2<br>1 2 3 4<br>5 6 7 8<br>9 10 0 12<br>13 14 11 15<br>1 2 3 4<br>5 6 7 8<br>9 10 11 12<br>13 15 14 0</p>
+</blockquote>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><blockquote>
+<p>Yes<br>No</p>
+</blockquote>
+<h3 id="题目思路"><a href="#题目思路" class="headerlink" title="题目思路"></a>题目思路</h3><p>先来学一下8数码问题的解法：<br>首先把所有数字（不包括空位的0）写成一行，就得到了一个1~8的排列，考虑空位的交换情况：1.左右交换，2.上下交换。对于左右交换而言，是不会改变写出的排列的逆序数的；而对上下交换，相当于在排列中向前或向后跳了两个位置，那么要么两个数都比它大或小，这样逆序数加2或减2，要么两个数一个比它大一个比它小，这样逆序数不变，综上，对于八数码问题，操作不会改变逆序数的奇偶性，所以只有初始状态和指定状态的逆序数奇偶性相同就有解。</p>
+<p>弄清楚了八数码，扩展起来就容易了，现在我们将其扩展到N维（即N <em> N的board，N </em> N - 1数码问题）。</p>
+<p>首先无论N的奇偶，左右交换不改变逆序数，N为奇数时：上下交换逆序数增加N-1或减少N-1或不变，因为N为奇数，所以逆序数奇偶性不变；而N为偶数时：上下交换一次奇偶性改变一次。</p>
+<p><strong>结论：N为奇数时，初始状态与指定状态逆序数奇偶性相同即有解；N为偶数时，先计算出从初始状态到指定状态，空位要移动的行数m，如果初始状态的逆序数加上m与指定状态的逆序数奇偶性相同，则有解。</strong></p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> numm ch-48</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pd putchar(<span class="meta-string">' '</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pn putchar(<span class="meta-string">'\n'</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fi first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> se second</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mid (l + r) / 2</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fre1 freopen(<span class="meta-string">"1.txt"</span>,<span class="meta-string">"r"</span>,stdin)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fre2 freopen(<span class="meta-string">"2.txt"</span>,<span class="meta-string">"w"</span>,stdout)</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> ll;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> LL;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">read</span><span class="params">(T&amp; res)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> flag = <span class="literal">false</span>; <span class="keyword">char</span> ch;</span><br><span class="line">    <span class="keyword">while</span> (!<span class="built_in">isdigit</span>(ch = getchar())) (ch == <span class="string">'-'</span>) &amp;&amp; (flag = <span class="literal">true</span>);</span><br><span class="line">    <span class="keyword">for</span> (res = numm; <span class="built_in">isdigit</span>(ch = getchar()); res = (res &lt;&lt; <span class="number">1</span>) + (res &lt;&lt; <span class="number">3</span>) + numm);</span><br><span class="line">    flag &amp;&amp; (res = -res);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(T x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; <span class="number">0</span>) <span class="built_in">putchar</span>(<span class="string">'-'</span>), x = -x;</span><br><span class="line">    <span class="keyword">if</span> (x &gt; <span class="number">9</span>) write(x / <span class="number">10</span>);</span><br><span class="line">    <span class="built_in">putchar</span>(x % <span class="number">10</span> + <span class="string">'0'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">16</span>];</span><br><span class="line"><span class="keyword">int</span> b[<span class="number">15</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    read(T);</span><br><span class="line">    <span class="keyword">while</span> (T--) &#123;</span><br><span class="line">        <span class="built_in">memset</span>(a, <span class="number">0</span>, <span class="keyword">sizeof</span>(a));</span><br><span class="line">        <span class="keyword">int</span> m, cnt = <span class="number">0</span>, t = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">4</span>; j++) &#123;</span><br><span class="line">                read(a[i * <span class="number">4</span> + j]);</span><br><span class="line">                <span class="keyword">if</span> (a[i * <span class="number">4</span> + j] == <span class="number">0</span>) &#123;</span><br><span class="line">                    m = <span class="number">3</span> - i;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    b[t++] = a[i * <span class="number">4</span> + j];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (b[i] &lt; b[j]) &#123;</span><br><span class="line">                    cnt++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!((cnt + m) % <span class="number">2</span>)) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"Yes\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"No\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.kesisour.work/2019/07/30/Python-for-Data-Science(3)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kesisour">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小宸工作站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/30/Python-for-Data-Science(3)/" itemprop="url">233</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-30T03:48:18+08:00">
+                2019-07-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/data-science/" itemprop="url" rel="index">
+                    <span itemprop="name">data science</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/30/Python-for-Data-Science(3)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://www.kesisour.work/2019/07/30/Python-for-Data-Science(3)/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Loops-and-List-Comprehensions"><a href="#Loops-and-List-Comprehensions" class="headerlink" title="Loops and List Comprehensions"></a>Loops and List Comprehensions</h2><h3 id="Loops-循环"><a href="#Loops-循环" class="headerlink" title="Loops(循环)"></a>Loops(循环)</h3><p>Loops are a way to repeatedly execute some code.Here’s an example:<br>(没啥好讲的吧？ 注意一下语法格式就行</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">planets = [<span class="string">'Mercury'</span>, <span class="string">'Venus'</span>, <span class="string">'Earth'</span>, <span class="string">'Mars'</span>, <span class="string">'Jupiter'</span>, <span class="string">'Saturn'</span>, <span class="string">'Uranus'</span>, <span class="string">'Neptune'</span>]</span><br><span class="line"><span class="keyword">for</span> planet <span class="keyword">in</span> planets:</span><br><span class="line">    print(planet, end = <span class="string">' '</span>) <span class="comment"># print all on same line</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Mercury Venus Earth Mars Jupiter Saturn Uranus Neptune</span><br></pre></td></tr></table></figure>
+<p>In addition to lists,we can iterate over the elements of a tuple:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">multiplicands = (<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">5</span>)</span><br><span class="line">product = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> mult <span class="keyword">in</span> multiplicands:</span><br><span class="line">    product = product * mult</span><br><span class="line">product</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">360</span><br></pre></td></tr></table></figure>
+<p>除了列表与元组，字符串也支持循环：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">'steganograpHy is the practicE of conceaLing a file, message, image, or video within another fiLe, message, image, Or video.'</span></span><br><span class="line">msg = <span class="string">''</span></span><br><span class="line"><span class="comment"># print all the uppercase letters in s, one at a time</span></span><br><span class="line"><span class="keyword">for</span> char <span class="keyword">in</span> s:</span><br><span class="line">    <span class="keyword">if</span> char.isupper():</span><br><span class="line">        print(char, end=<span class="string">''</span>)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HELLO</span><br></pre></td></tr></table></figure>
+<p><code>range()</code> is a function that returns a sequence of numbers. It turns out to be very useful for writing loops.<br>For example, if we want to repeat some action 5 times:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">    print(<span class="string">"Doing important work. i ="</span>, i)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Doing important work. i = 0</span><br><span class="line">Doing important work. i = 1</span><br><span class="line">Doing important work. i = 2</span><br><span class="line">Doing important work. i = 3</span><br><span class="line">Doing important work. i = 4</span><br></pre></td></tr></table></figure>
+<p>除了<code>for</code>循环，还有<code>while</code>循环：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> i &lt; <span class="number">10</span>:</span><br><span class="line">    print(i, end=<span class="string">' '</span>)</span><br><span class="line">    i += <span class="number">1</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 1 2 3 4 5 6 7 8 9</span><br></pre></td></tr></table></figure>
+<h3 id="List-comprehensions"><a href="#List-comprehensions" class="headerlink" title="List comprehensions"></a>List comprehensions</h3><p>直接看个例子来理解一下<code>list comprehension</code>:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">squares = [n**<span class="number">2</span> <span class="keyword">for</span> n <span class="keyword">in</span> range(<span class="number">10</span>)]</span><br><span class="line">squares</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span><br></pre></td></tr></table></figure>
+<p>We can also add an <code>if</code> condition:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">short_planets = [planet <span class="keyword">for</span> planet <span class="keyword">in</span> planets <span class="keyword">if</span> len(planet) &lt; <span class="number">6</span>]</span><br><span class="line">short_planets</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&apos;Venus&apos;, &apos;Earth&apos;, &apos;Mars&apos;]</span><br></pre></td></tr></table></figure>
+<p><del>好像SQL啊</del><br>Here’s an example of filtering with an if condition and applying some transformation to the loop variable:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># str.upper() returns an all-caps version of a string</span></span><br><span class="line">loud_short_planets = [planet.upper() + <span class="string">'!'</span> <span class="keyword">for</span> planet <span class="keyword">in</span> planets <span class="keyword">if</span> len(planet) &lt; <span class="number">6</span>]</span><br><span class="line">loud_short_planets</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&apos;VENUS!&apos;, &apos;EARTH!&apos;, &apos;MARS!&apos;]</span><br></pre></td></tr></table></figure>
+<p>如果你觉得难读，你也可以写成这样：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    planet.upper() + <span class="string">'!'</span> </span><br><span class="line">    <span class="keyword">for</span> planet <span class="keyword">in</span> planets </span><br><span class="line">    <span class="keyword">if</span> len(planet) &lt; <span class="number">6</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p><del>更像SQL了</del></p>
+<h2 id="Strings-and-Dictionaries"><a href="#Strings-and-Dictionaries" class="headerlink" title="Strings and Dictionaries"></a>Strings and Dictionaries</h2><h3 id="Strings"><a href="#Strings" class="headerlink" title="Strings"></a>Strings</h3><p><strong>One place where the Python language really shines is in the manipulation of strings.</strong></p>
+<p>This section will cover some of Python’s built-in string methods and formatting operations.<br>Such string manipulation patterns comde up often in the context of data science work, and is one of big perk of Python in this context.</p>
+<h3 id="String-syntax"><a href="#String-syntax" class="headerlink" title="String syntax"></a>String syntax</h3><p>String in Python can be defined using either single or double quotations.They are functonally equivalent.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="string">'Pluto is a planet'</span></span><br><span class="line">y = <span class="string">'Pluto is a planet'</span></span><br><span class="line">x == y</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">True</span><br></pre></td></tr></table></figure>
+<p>那为啥还要分单双引号呢？看下面这个例子：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"Pluto's a planet!"</span>)</span><br><span class="line">print(<span class="string">'My dog is named "Pluto"'</span>)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Pluto&apos;s a planet!</span><br><span class="line">My dog is named &quot;Pluto&quot;</span><br></pre></td></tr></table></figure>
+<p>当然，我们也可以用反斜杠的方式：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'Pluto\'s a planet!'</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;Pluto&apos;s a planet!&quot;</span><br></pre></td></tr></table></figure>
+<img src="/2019/07/30/Python-for-Data-Science(3)/反斜杠用法.png" title="backslash用法">
+<p>In addition, Python’s tripe quote syntax for strings lets us include newlines literally. We’ve already seen this in the docstrings we use to document our functions, but we can use them anywhere we want to define a string.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">"hello\nworld"</span></span><br><span class="line">b = <span class="string">"""hello</span></span><br><span class="line"><span class="string">world"""</span></span><br><span class="line">print(b)</span><br><span class="line">a == b</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
+<p>hello<br>world<br>True<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">上面可以看到，两种定义方法是等价的。</span><br><span class="line"></span><br><span class="line">### Strings are sequences</span><br><span class="line"></span><br><span class="line">String can be thought of as sequences of characters. **Almost everything we&apos;ve seen that we can do to a list, we can also do to a string.**</span><br><span class="line"></span><br><span class="line">```py</span><br><span class="line">planet = &apos;Pluto&apos;</span><br><span class="line">planet[0]</span><br><span class="line">planet[-3:]</span><br><span class="line">len(Planet)</span><br><span class="line">[cagr + &apos;!&apos; for char in planet]</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">P</span><br><span class="line">&apos;uto&apos;</span><br><span class="line">6</span><br><span class="line">[&apos;P! &apos;, &apos;l! &apos;, &apos;u! &apos;, &apos;t! &apos;, &apos;o! &apos;]</span><br></pre></td></tr></table></figure>
+<p><strong>But a majoy way in which they differ from lists is that they are immutable. We can’t modify them.</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这种操作就会报错！！！</span></span><br><span class="line">planet[<span class="number">0</span>] = <span class="string">'B'</span></span><br></pre></td></tr></table></figure>
+<p>(这好像跟元组差不多？</p>
+<h3 id="String-methods"><a href="#String-methods" class="headerlink" title="String methods"></a>String methods</h3><ol>
+<li>ALL CPS</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">claim = <span class="string">"Pluto is a planet!"</span></span><br><span class="line">claim.upper()</span><br><span class="line"><span class="comment"># 不改变 calim 本身</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;PLUTO IS A PLANET!&apos;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>all lowercase</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">claim.lower()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;pluto is a planet!&apos;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>search for the first index of a string</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">claim.index(<span class="string">'plan'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">111</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li><code>startswith()</code> and <code>endswith()</code></li>
+</ol>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">claim.startswith(planet)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">True</span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">claim.endswith(<span class="string">'dwarf planet'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">False</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li><code>split()</code> and <code>join()</code></li>
+</ol>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">words = claim.split()</span><br><span class="line">words</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&apos;Pluto&apos;, &apos;is&apos;, &apos;a&apos;, &apos;planet!&apos;]</span><br></pre></td></tr></table></figure>
+<p>默认空格，也可以自己传参</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">datestr = <span class="string">'1956-01-31'</span></span><br><span class="line">a =  datestr.split(<span class="string">'-'</span>)</span><br><span class="line">print(a)</span><br><span class="line">year, month, day = datestr.split(<span class="string">'-'</span>)</span><br><span class="line">print(year, month, day)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[&apos;1956&apos;, &apos;01&apos;, &apos;31&apos;]</span><br><span class="line">1956 01 31</span><br></pre></td></tr></table></figure>
+<p><code>jion()</code> 函数刚好相反哦~</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'/'</span>.join([month, day, year])</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;01/31/1956&apos;</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>Building strings with <code>format()</code></li>
+</ol>
+<p>直接用 + 就可以将两个字符串相连</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">planet + <span class="string">', we miss you.'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;Pluto, we miss you.&apos;</span><br></pre></td></tr></table></figure>
+<p>If we want to throw in any non-string objects, we have to be careful to call str() on them first</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">position = <span class="number">9</span></span><br><span class="line">planet + <span class="string">", you'll always be the "</span> + str(position) + <span class="string">"th planet to me."</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;Pluto, you&apos;ll always be the 9th planet to me.&quot;</span><br></pre></td></tr></table></figure>
+<p>这个 code 看起来就不舒服，所以，还有下面这种方法：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"&#123;&#125;, you'll always be the &#123;&#125;th planet to me."</span>.format(planet, position)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;Pluto, you&apos;ll always be the 9th planet to me.&quot;</span><br></pre></td></tr></table></figure>
+<p>是不是看懂了？还可以在大括号内自定义格式喔~</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pluto_mass = <span class="number">1.303</span> * <span class="number">10</span>**<span class="number">22</span></span><br><span class="line">earth_mass = <span class="number">5.9722</span> * <span class="number">10</span>**<span class="number">24</span></span><br><span class="line">population = <span class="number">52910390</span></span><br><span class="line"><span class="comment">#         2 decimal points   3 decimal points, format as percent     separate with commas</span></span><br><span class="line"><span class="string">"&#123;&#125; weighs about &#123;:.2&#125; kilograms (&#123;:.3%&#125; of Earth's mass). It is home to &#123;:,&#125; Plutonians."</span>.format(</span><br><span class="line">    planet, pluto_mass, pluto_mass / earth_mass, population,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;Pluto weighs about 1.3e+22 kilograms (0.218% of Earth&apos;s mass). It is home to 52,910,390 Plutonians.&quot;</span><br></pre></td></tr></table></figure>
+<p>可以根据下标指定字符串<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Referring to format() arguments by index, starting from 0</span></span><br><span class="line">s = <span class="string">"""Pluto's a &#123;0&#125;.</span></span><br><span class="line"><span class="string">No, it's a &#123;1&#125;.</span></span><br><span class="line"><span class="string">&#123;0&#125;!</span></span><br><span class="line"><span class="string">&#123;1&#125;!"""</span>.format(<span class="string">'planet'</span>, <span class="string">'dwarf planet'</span>)</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure></p>
+<p>···<br>Pluto’s a planet.<br>No, it’s a dwarf planet.<br>planet!<br>dwarf planet!<br>···</p>
+<h3 id="Dictionaries"><a href="#Dictionaries" class="headerlink" title="Dictionaries"></a>Dictionaries</h3><p>Dictionaries are a built-in Python data structure for mapping keys to values.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 基本定义方法</span></span><br><span class="line">numbers = &#123;<span class="string">'one'</span>:<span class="number">1</span>, <span class="string">'two'</span>:<span class="number">2</span>, <span class="string">'three'</span>:<span class="number">3</span>&#125;</span><br><span class="line">numvers[<span class="string">'one'</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure>
+<p>我们也可以直接添加元素：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nukber[<span class="string">'eleven'</span>] = <span class="number">11</span></span><br><span class="line">numbers</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&apos;one&apos;: 1, &apos;two&apos;: 2, &apos;three&apos;: 3, &apos;eleven&apos;: 11&#125;</span><br></pre></td></tr></table></figure>
+<p>修改也是这种操作：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">numbers[<span class="string">'one'</span>] = <span class="string">'Pluto'</span></span><br><span class="line">numbers</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&apos;one&apos;: &apos;Pluto&apos;, &apos;two&apos;: 2, &apos;three&apos;: 3, &apos;eleven&apos;: 11&#125;</span><br></pre></td></tr></table></figure>
+<p>Python has <strong>dictionary comprehensions</strong> with a syntax similar to the list comprehensions we saw in the previous tutorial.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">planets = [<span class="string">'Mercury'</span>, <span class="string">'Venus'</span>, <span class="string">'Earth'</span>, <span class="string">'Mars'</span>, <span class="string">'Jupiter'</span>, <span class="string">'Saturn'</span>, <span class="string">'Uranus'</span>, <span class="string">'Neptune'</span>]</span><br><span class="line">planet_to_initial = &#123;planet: planet[<span class="number">0</span>] <span class="keyword">for</span> planet <span class="keyword">in</span> planets&#125;</span><br><span class="line">planet_to_initial</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;&apos;Mercury&apos;: &apos;M&apos;,</span><br><span class="line"> &apos;Venus&apos;: &apos;V&apos;,</span><br><span class="line"> &apos;Earth&apos;: &apos;E&apos;,</span><br><span class="line"> &apos;Mars&apos;: &apos;M&apos;,</span><br><span class="line"> &apos;Jupiter&apos;: &apos;J&apos;,</span><br><span class="line"> &apos;Saturn&apos;: &apos;S&apos;,</span><br><span class="line"> &apos;Uranus&apos;: &apos;U&apos;,</span><br><span class="line"> &apos;Neptune&apos;: &apos;N&apos;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 用 in 的条件判断</span></span><br><span class="line"><span class="string">'Saturn'</span> <span class="keyword">in</span> planet_to_initial</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">True</span><br></pre></td></tr></table></figure>
+<p>这个映射是前面映射后面哈，<code>&#39;E&#39; in planets</code>这样就是<code>False</code>了。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> numbers:</span><br><span class="line">    print(<span class="string">"&#123;&#125; = &#123;&#125;"</span>.format(k, numbers[k]))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">one = Pluto</span><br><span class="line">two = 2</span><br><span class="line">three = 3</span><br><span class="line">eleven = 11</span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Get all the initials, sort them alphabetically, and put them in a space-separated string.</span></span><br><span class="line"><span class="string">' '</span>.join(sorted(planet_to_initial.values()))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;E J M M N S U V&apos;</span><br></pre></td></tr></table></figure>
+<p>The very useful <code>dict.items()</code> method lets us iterate over the keys and values of a dictionary simultaneously. (In Python jargon, an item refers to a key, value pair)</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">planet_to_initial.items()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dict_items([(&apos;Mercury&apos;, &apos;M&apos;), (&apos;Venus&apos;, &apos;V&apos;), (&apos;Earth&apos;, &apos;E&apos;), (&apos;Mars&apos;, &apos;M&apos;), (&apos;Jupiter&apos;, &apos;J&apos;), (&apos;Saturn&apos;, &apos;S&apos;), (&apos;Uranus&apos;, &apos;U&apos;), (&apos;Neptune&apos;, &apos;N&apos;)])</span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> planet, initial <span class="keyword">in</span> planet_to_initial.items():</span><br><span class="line">    print(<span class="string">"&#123;&#125; begins with \"&#123;&#125;\""</span>.format(planet.rjust(<span class="number">10</span>), initial))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Mercury begins with &quot;M&quot;</span><br><span class="line">  Venus begins with &quot;V&quot;</span><br><span class="line">  Earth begins with &quot;E&quot;</span><br><span class="line">   Mars begins with &quot;M&quot;</span><br><span class="line">Jupiter begins with &quot;J&quot;</span><br><span class="line"> Saturn begins with &quot;S&quot;</span><br><span class="line"> Uranus begins with &quot;U&quot;</span><br><span class="line">Neptune begins with &quot;N&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>tips:</strong> <code>ljust()</code> and <code>rjust()</code> 是右对齐和左对齐</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.kesisour.work/2019/07/28/Python-for-Data-Science(2)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -610,7 +1100,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  609
+                  834
                 </span>
               
 
@@ -626,7 +1116,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  3
+                  4
                 </span>
               
             </div>
@@ -656,7 +1146,13 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> numm ch-48</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pd putchar(<span class="meta-string">' '</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pn putchar(<span class="meta-string">'\n'</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fi first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> se second</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mid (l + r) &gt;&gt; 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fre1 freopen(<span class="meta-string">"1.txt"</span>,<span class="meta-string">"r"</span>,stdin)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fre2 freopen(<span class="meta-string">"2.txt"</span>,<span class="meta-string">"w"</span>,stdout)</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> ll;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">read</span><span class="params">(T&amp; res)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">bool</span> flag = <span class="literal">false</span>; <span class="keyword">char</span> ch;</span><br><span class="line">	<span class="keyword">while</span> (!<span class="built_in">isdigit</span>(ch = getchar())) (ch == <span class="string">'-'</span>) &amp;&amp; (flag = <span class="literal">true</span>);</span><br><span class="line">	<span class="keyword">for</span> (res = numm; <span class="built_in">isdigit</span>(ch = getchar()); res = (res &lt;&lt; <span class="number">1</span>) + (res &lt;&lt; <span class="number">3</span>) + numm);</span><br><span class="line">	flag &amp;&amp; (res = -res);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(T x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (x &lt; <span class="number">0</span>) <span class="built_in">putchar</span>(<span class="string">'-'</span>), x = -x;</span><br><span class="line">	<span class="keyword">if</span> (x &gt; <span class="number">9</span>) write(x / <span class="number">10</span>);</span><br><span class="line">	<span class="built_in">putchar</span>(x % <span class="number">10</span> + <span class="string">'0'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////////</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">200010</span>;</span><br><span class="line"><span class="keyword">int</span> n, q, m, cnt = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> a[N], b[N], T[N];</span><br><span class="line"><span class="keyword">int</span> sum[N &lt;&lt; <span class="number">5</span>], L[N &lt;&lt; <span class="number">5</span>], R[N &lt;&lt; <span class="number">5</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">getid</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;val)</span>  <span class="comment">//离散化</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> lower_bound(b + <span class="number">1</span>, b + m + <span class="number">1</span>, val) - b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> rt = ++cnt;</span><br><span class="line">	sum[rt] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span> (l &lt; r) &#123;</span><br><span class="line">		L[rt] = build(<span class="number">1</span>, mid);</span><br><span class="line">		R[rt] = build(mid + <span class="number">1</span>, r);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> rt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> pre, <span class="keyword">int</span> l, <span class="keyword">int</span> r,<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> rt = ++cnt;</span><br><span class="line">	L[rt] = L[pre]; R[rt] = R[pre]; sum[rt] = sum[pre] + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span> (l &lt; r) &#123;</span><br><span class="line">		<span class="keyword">if</span> (x &lt;= mid) L[rt] = update(L[pre], <span class="number">1</span>, mid, x);</span><br><span class="line">		<span class="keyword">else</span> R[rt] = update(R[pre], mid + <span class="number">1</span>, r, x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> rt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (l &gt;= r) <span class="keyword">return</span> l;</span><br><span class="line">	<span class="keyword">int</span> x = sum[L[v]] - sum[L[u]];</span><br><span class="line">	<span class="keyword">if</span> (x &gt;= k) <span class="keyword">return</span> query(L[u], L[v], <span class="number">1</span>, mid, k);</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> query(R[u], R[v], mid + <span class="number">1</span>, r, k - x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	read(n); read(q);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		read(a[i]);</span><br><span class="line">		b[i] = a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	sort(b + <span class="number">1</span>, b + <span class="number">1</span> + n);</span><br><span class="line">	m = unique(b + <span class="number">1</span>, b + <span class="number">1</span> + n) - b - <span class="number">1</span>;</span><br><span class="line">	T[<span class="number">0</span>] = build(<span class="number">1</span>, m);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> t = getid(a[i]);</span><br><span class="line">		T[i] = update(T[i - <span class="number">1</span>], <span class="number">1</span>, m, t);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (q--) &#123;</span><br><span class="line">		<span class="keyword">int</span> x, y, z;</span><br><span class="line">		read(x); read(y); read(z);</span><br><span class="line">		<span class="keyword">int</span> t = query(T[x - <span class="number">1</span>], T[y], <span class="number">1</span>, m, z);</span><br><span class="line">		<span class="keyword">while</span> (b[t]); pn;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上述板子是<a href="https://www.luogu.org/problemnew/show/P2617" target="_blank" rel="noopener">洛谷版子题</a>的题解。</p>
 <p>由于主席树比较复杂，我在这里简单解释一下思路，（这样我以后来粘的时候还方便一点23333）</p>
-<p><code>a[]</code>和<code>b[]</code>是来保存最初的数组的，传入值后对<code>b[]</code>进行排序去重</p>
+<p><code>a[]</code>和<code>b[]</code>是来保存最初的数组的，传入值后对<code>b[]</code>进行排序去重(离散化)。</p>
+<p><strong>一个很重要的概念，L，R，T 三个数组保存的内容全都是下标：</strong></p>
+<p><code>L[]</code>和<code>R[]</code>用来存储左右子树的下标，比如<code>L[x]</code>即为标号为<code>x</code>的结点的左子树标号为<code>L[x]</code></p>
+<p>由于主席树实际上是根据插入 n 个点形成 n 个权值线段树，所以用数组<code>T[]</code>来保存每次新线段树的根节点下标</p>
+<p><code>build()</code>函数递归建树，变量<code>rt</code>表示当前下标(注：因为采取动态开点的方式，实际上每开一个点就是在已开的数组末尾再开一个，实际存储结构与逻辑结构没关系，并不是堆存储那种)</p>
+<p><code>getid()</code>用来获取某个值在<code>b[]</code>中的下标位置，即离散化后的顺序</p>
+<p><code>sum[]</code>数组用来存放前缀元素的个数，即<code>sum[x]</code>表示从</p>
 
           
         
@@ -1962,412 +2458,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.kesisour.work/2019/04/14/2050-冰水挑战（dp思路简单总结）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="kesisour">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小宸工作站">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/14/2050-冰水挑战（dp思路简单总结）/" itemprop="url">[2050] 冰水挑战（dp思路简单总结）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-14T16:21:37+08:00">
-                2019-04-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM/" itemprop="url" rel="index">
-                    <span itemprop="name">ACM</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/04/14/2050-冰水挑战（dp思路简单总结）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="http://www.kesisour.work/2019/04/14/2050-冰水挑战（dp思路简单总结）/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  1.2k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><blockquote>
-<p>Polar Bear Pitching helps you crystallize your message.<br>The stage could not be any cooler, and we mean literally:<br>a hole cut through the ice in the frozen Baltic Sea.</p>
-<p>2050有一项很有挑战的活动 —— Polar Bear Pitching 。<br>体验人跳入冰水中讲述自己的恐惧，改变以及梦想。这是没有时间限制的演讲，就看你能在冰水中呆多久！</p>
-<p>现在，我们要依次面对 n 个冰水挑战，每个挑战你都可以选择接受或不接受。接受第 i 个挑战会让你丧失 ai点体力，因为每个挑战所处的环境不同，如果你要挑战它，在挑战它之前你的体力 x 会变&gt;成 min(x,bi)，当你完成这个挑战的时候，你的体力会变成 x−ai，体力任何时候不允许小于等于 0，无论你是否接受第 i 个挑战，在这个挑战结束以后你的体力都会增加 ci。</p>
-<p>现在我们想知道最多可以完成多少个挑战。</p>
-</blockquote>
-<h2 id="Input-amp-amp-Output"><a href="#Input-amp-amp-Output" class="headerlink" title="Input&amp;&amp;Output"></a>Input&amp;&amp;Output</h2><blockquote>
-<p>第一行一个正整数 T (T≤50) 表示数据组数。<br>接下来 T 组数据，每组第一行两个正整数 n,c (1≤n≤103,1≤c≤109)，表示挑战的数量和初始体力，接下来 n 行，每行三个非负整数 ai,bi,ci(0≤ai,bi,ci≤109)。</p>
-<p>对于每组数据输出一行一个数，表示你最多能完成几个挑战。</p>
-</blockquote>
-<h2 id="Sample-Input-amp-amp-Output"><a href="#Sample-Input-amp-amp-Output" class="headerlink" title="Sample Input&amp;&amp;Output"></a>Sample Input&amp;&amp;Output</h2><blockquote>
-<p>Sample Input:<br>2<br>3 10<br>1 2 0<br>4 8 3<br>6 10 1<br>2 1<br>1 1 1<br>1 1 1</p>
-</blockquote>
-<blockquote>
-<p>Sample Output:<br>2<br>0</p>
-</blockquote>
-<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><p>很典型的dp题，所以也想借这个题好好理一理面临dp时候的思路。</p>
-<p><strong>首先，啥是dp？</strong><br>在递归的时候，我们可以通过不断地分解问题，将复杂的任务简化为最基本的小问题，比如基于递归实现的归并排序，排列，组合等。不过有时候，我们并不用处理所有可能的情况，只要找到满足条件的最优解就可以了，这种情况下，我们需要在各种可能的局部解中，找出那些可能达到最优的局部解，而放弃其他的局部解，这个寻找最优解的过程叫动态规划。（<a href="https://www.jianshu.com/p/a1f5731811af" target="_blank" rel="noopener">这段话我是从这里摘的</a>）<br><strong>所以，dp就是一个不断寻找局部最优解并更新的过程。</strong></p>
-<p><strong>下一个问题，什么样的题可以用动态规划来解决？</strong><br>首先，如果一个问题有多种可能，看上去需要排列或者组合的思想，但是最终求的只是最优解，如最大值，最小值，最短子串，最长子串等，可以试试使用动态规划。<br>其实，状态转移方程是个关键。你可以用状态转移表来帮助自己理解整个过程。如果能找到准确的转移方程，那么离最终的代码实现也就不远了 。<br>这里说下什么是状态转移方程：从上一个状态到下一个状态之间可能存在一些变化，以及基于这些变化的最终决策结果。我们把这样的表达式称为状态转移方程。所有的动态规划算法中，状态转移是关键。<br><del>（我还是从上面的链接摘的，我好懒）</del></p>
-<p>由此我们知道，需要不断寻找局部最优解，并且能写出状态转移方程的题目，就直接写dp跑就行了（大概）。</p>
-<p>接下来我们回到这个题目，dp的思路已经十分明确了：</p>
-<ol>
-<li><p>建立一个数组是s[0~n]来存储接受0~n个挑战后的体力（最优体力）</p>
-</li>
-<li><p>尝试建立状态转移方程：<code>s[j + 1] = max(s[j + 1], min(s[j], b[i]) - a[i] + c[i]);</code>（abc数组的具体含义去阅读我的完整代码好不啦）。注意：因为每次是s[j]更新都需要要用到是s[j-1]的值，因此在同一个挑战里面更新s[j]需要逆序循环。（我仿佛突然明白了运筹学课本里说dp一般逆序的含义？？运筹学NB！！）</p>
-</li>
-<li><p>从头开始跑一遍所有挑战，并建立变量m存储最多的挑战次数</p>
-</li>
-</ol>
-<p>Over~<br><del>今天的小宸依旧是又进步了一点点的小菜鸡呢</del></p>
-<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> t, n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;t);</span><br><span class="line">	<span class="keyword">while</span> (t--) &#123;</span><br><span class="line">		<span class="keyword">int</span> a[<span class="number">1010</span>], b[<span class="number">1010</span>], c[<span class="number">1010</span>], s[<span class="number">1010</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;n, &amp;s[<span class="number">0</span>]);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>, &amp;a[i], &amp;b[i], &amp;c[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> m = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = m; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">				<span class="keyword">if</span> (min(s[j], b[i]) - a[i] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">					s[j + <span class="number">1</span>] = max(s[j + <span class="number">1</span>], min(s[j], b[i]) - a[i] + c[i]);</span><br><span class="line">					s[j] += c[i];</span><br><span class="line">					m = max(m, j + <span class="number">1</span>);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> &#123;</span><br><span class="line">					s[j] += c[i];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, m);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.kesisour.work/2019/04/10/汉诺塔/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="kesisour">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小宸工作站">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/10/汉诺塔/" itemprop="url">汉诺塔的非递归实现</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-10T07:59:57+08:00">
-                2019-04-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM/" itemprop="url" rel="index">
-                    <span itemprop="name">ACM</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/04/10/汉诺塔/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="http://www.kesisour.work/2019/04/10/汉诺塔/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  348
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="题目与分析"><a href="#题目与分析" class="headerlink" title="题目与分析"></a>题目与分析</h2><p>今天在刷pta上面的数据结构的时候，发现居然忘了汉诺塔怎么做…<br>日…我真的是越来越菜了…<br>汉诺塔是什么这里就不用来重复了吧？附个<a href="https://zh.wikipedia.org/zh-hans/%E6%B1%89%E8%AF%BA%E5%A1%94" target="_blank" rel="noopener">链接</a>，有兴趣的自己去看。</p>
-<p>接下来简单的讲一下思路。我们都知道汉诺塔的思想就是靠和尚们互相推诿来做对吧？当你是其中一个和尚，你看见一堆盘子丢在a柱上面，你要做的事情只有三个：</p>
-<ol>
-<li><p>命令小和尚把除了最后一个之外的盘子全都丢在b柱上。</p>
-</li>
-<li><p>自己把a柱上最后一个盘子放在c柱上。</p>
-</li>
-<li><p>命令小和尚把b柱上的盘子丢在c柱上，自己走人。</p>
-</li>
-</ol>
-<p>这样一看多简单啊！<del>多么醉人的递归思想</del></p>
-<p>来，直接po代码了。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="keyword">char</span> a, b, c;</span><br><span class="line">	node(<span class="keyword">int</span> m, <span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> z) :n(m), a(x), b(y), c(z)&#123;&#125;</span><br><span class="line">&#125;node;</span><br><span class="line"></span><br><span class="line"><span class="built_in">stack</span> &lt;node&gt; s;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">	s.push(node(n, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>));</span><br><span class="line">	<span class="keyword">while</span> (!s.empty()) &#123;</span><br><span class="line">		node t = s.top();</span><br><span class="line">		s.pop();</span><br><span class="line">		<span class="keyword">if</span> (t.n == <span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">"%c -&gt; %c\n"</span>, t.a, t.c);</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			s.push(node(t.n - <span class="number">1</span>, t.b, t.a, t.c));</span><br><span class="line">			s.push(node(<span class="number">1</span>, t.a, t.b, t.c));</span><br><span class="line">			s.push(node(t.n - <span class="number">1</span>, t.a, t.c, t.b));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2418,7 +2508,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2440,7 +2530,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -2491,7 +2581,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">9.8k</span>
+    <span title="Site words total count">12.4k</span>
   
 </div>
 

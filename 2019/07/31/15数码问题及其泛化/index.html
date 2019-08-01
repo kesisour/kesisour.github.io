@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="数据结构,平衡二叉树,">
+  <meta name="keywords" content="杂项,">
 
 
 
@@ -82,18 +82,20 @@
 
 
 
-<meta name="description" content="一道AVL树的实现题，刚好借着这个机会复习一下AVL的概念和代码。 AVL树的概念链接我真的是越来越懒了 Problem Description 将给定的一系列数字插入初始为空的AVL树，请你输出最后生成的AVL树的根结点的值。  Input&amp;amp;&amp;amp;Output 输入的第一行给出一个正整数N（≤20），随后一行给出N个不同的整数，其间以空格分隔。   在一行中输出顺序插入上述整数到一棵">
-<meta name="keywords" content="数据结构,平衡二叉树">
+<meta name="description" content="(本博客思路部分基本为转载) 先来看下题目： Problem DescriptionYou are given a 4 × 4 grid, which consists of 15 number cells and an empty cell.All numbers are unique and ranged from 1 to 15.In this board, the cells which">
+<meta name="keywords" content="杂项">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[PTA] 练习4.2 平衡二叉树的根">
-<meta property="og:url" content="http://www.kesisour.work/2019/04/14/[PTA] 练习4.2 平衡二叉树的根/index.html">
+<meta property="og:title" content="&quot;8数码问题及其泛化&quot;">
+<meta property="og:url" content="http://www.kesisour.work/2019/07/31/15数码问题及其泛化/index.html">
 <meta property="og:site_name" content="小宸工作站">
-<meta property="og:description" content="一道AVL树的实现题，刚好借着这个机会复习一下AVL的概念和代码。 AVL树的概念链接我真的是越来越懒了 Problem Description 将给定的一系列数字插入初始为空的AVL树，请你输出最后生成的AVL树的根结点的值。  Input&amp;amp;&amp;amp;Output 输入的第一行给出一个正整数N（≤20），随后一行给出N个不同的整数，其间以空格分隔。   在一行中输出顺序插入上述整数到一棵">
+<meta property="og:description" content="(本博客思路部分基本为转载) 先来看下题目： Problem DescriptionYou are given a 4 × 4 grid, which consists of 15 number cells and an empty cell.All numbers are unique and ranged from 1 to 15.In this board, the cells which">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-14T12:52:46.000Z">
+<meta property="og:image" content="http://www.kesisour.work/2019/07/31/15数码问题及其泛化/img.jpg">
+<meta property="og:updated_time" content="2019-07-30T23:30:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[PTA] 练习4.2 平衡二叉树的根">
-<meta name="twitter:description" content="一道AVL树的实现题，刚好借着这个机会复习一下AVL的概念和代码。 AVL树的概念链接我真的是越来越懒了 Problem Description 将给定的一系列数字插入初始为空的AVL树，请你输出最后生成的AVL树的根结点的值。  Input&amp;amp;&amp;amp;Output 输入的第一行给出一个正整数N（≤20），随后一行给出N个不同的整数，其间以空格分隔。   在一行中输出顺序插入上述整数到一棵">
+<meta name="twitter:title" content="&quot;8数码问题及其泛化&quot;">
+<meta name="twitter:description" content="(本博客思路部分基本为转载) 先来看下题目： Problem DescriptionYou are given a 4 × 4 grid, which consists of 15 number cells and an empty cell.All numbers are unique and ranged from 1 to 15.In this board, the cells which">
+<meta name="twitter:image" content="http://www.kesisour.work/2019/07/31/15数码问题及其泛化/img.jpg">
 
 
 
@@ -123,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://www.kesisour.work/2019/04/14/[PTA] 练习4.2 平衡二叉树的根/">
+  <link rel="canonical" href="http://www.kesisour.work/2019/07/31/15数码问题及其泛化/">
 
 
 
 
 
-  <title>[PTA] 练习4.2 平衡二叉树的根 | 小宸工作站</title>
+  <title>"8数码问题及其泛化" | 小宸工作站</title>
   
 <script>
   window.fbAsyncInit = function() {
@@ -286,7 +288,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.kesisour.work/2019/04/14/[PTA] 练习4.2 平衡二叉树的根/">
+    <link itemprop="mainEntityOfPage" href="http://www.kesisour.work/2019/07/31/15数码问题及其泛化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="kesisour">
@@ -303,7 +305,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[PTA] 练习4.2 平衡二叉树的根</h1>
+          <h1 class="post-title" itemprop="name headline">"8数码问题及其泛化"</h1>
         
 
         <div class="post-meta">
@@ -315,8 +317,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-14T20:52:46+08:00">
-                2019-04-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-31T07:30:44+08:00">
+                2019-07-31
               </time>
             
 
@@ -356,8 +358,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/04/14/[PTA] 练习4.2 平衡二叉树的根/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="http://www.kesisour.work/2019/04/14/[PTA] 练习4.2 平衡二叉树的根/" itemprop="commentCount">0</span> comments
+                <a href="/2019/07/31/15数码问题及其泛化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://www.kesisour.work/2019/07/31/15数码问题及其泛化/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -384,7 +386,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  465
+                  853
                 </span>
               
 
@@ -400,7 +402,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  2
+                  4
                 </span>
               
             </div>
@@ -421,32 +423,22 @@
       
 
       
-        <p>一道AVL树的实现题，刚好借着这个机会复习一下AVL的概念和代码。</p>
-<p><a href="https://www.cnblogs.com/zhuwbox/p/3636783.html" target="_blank" rel="noopener">AVL树的概念链接</a><br><del>我真的是越来越懒了</del></p>
-<h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><blockquote>
-<p>将给定的一系列数字插入初始为空的AVL树，请你输出最后生成的AVL树的根结点的值。</p>
+        <p><a href="https://www.cnblogs.com/wmx3ng/archive/2012/10/24/2775941.html" target="_blank" rel="noopener">(本博客思路部分基本为转载)</a></p>
+<p>先来看下题目：</p>
+<h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>You are given a 4 × 4 grid, which consists of 15 number cells and an empty cell.<br>All numbers are unique and ranged from 1 to 15.<br>In this board, the cells which are adjacent with the empty cell can move to the empty cell.<br>Your task is to make the input grid to the target grid shown in the figure below.<br>In the following example (sample input), you can get the target grid in two moves.<br><img src="/2019/07/31/15数码问题及其泛化/img.jpg"></p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>he first line contains an integer T (1 &lt;= T &lt;= 10^5) denoting the number of test cases.<br>Each test case consists of four lines each containing four space-separated integers, denoting the input grid. 0 indicates the empty cell.</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>For each test case, you have to print the answer in one line.<br>If you can’t get the target grid within 120 moves, then print ‘No’, else print ‘Yes’.</p>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><blockquote>
+<p>2<br>1 2 3 4<br>5 6 7 8<br>9 10 0 12<br>13 14 11 15<br>1 2 3 4<br>5 6 7 8<br>9 10 11 12<br>13 15 14 0</p>
 </blockquote>
-<h2 id="Input-amp-amp-Output"><a href="#Input-amp-amp-Output" class="headerlink" title="Input&amp;&amp;Output"></a>Input&amp;&amp;Output</h2><blockquote>
-<p>输入的第一行给出一个正整数N（≤20），随后一行给出N个不同的整数，其间以空格分隔。</p>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><blockquote>
+<p>Yes<br>No</p>
 </blockquote>
-<blockquote>
-<p>在一行中输出顺序插入上述整数到一棵初始为空的AVL树后，该树的根结点的值。</p>
-</blockquote>
-<h2 id="Sample-Input-amp-amp-Output"><a href="#Sample-Input-amp-amp-Output" class="headerlink" title="Sample Input&amp;&amp;Output"></a>Sample Input&amp;&amp;Output</h2><p>1：</p>
-<blockquote>
-<p>5<br>88 70 61 96 120</p>
-</blockquote>
-<blockquote>
-<p>70</p>
-</blockquote>
-<p>2：</p>
-<blockquote>
-<p>7<br>88 70 61 96 120 90 65</p>
-</blockquote>
-<blockquote>
-<p>88</p>
-</blockquote>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node</span>* <span class="title">AVLNode</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">	AVLNode Left, Right;</span><br><span class="line">	<span class="keyword">int</span> Data;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetHeight</span><span class="params">(AVLNode A)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (!A) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">int</span> L = GetHeight(A-&gt;Left);</span><br><span class="line">		<span class="keyword">int</span> R = GetHeight(A-&gt;Right);</span><br><span class="line">		<span class="keyword">return</span> max(L, R) + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">AVLNode <span class="title">SingleLeftRotation</span><span class="params">(AVLNode A)</span> </span>&#123;</span><br><span class="line">	AVLNode B = A-&gt;Left;</span><br><span class="line">	A-&gt;Left = B-&gt;Right;</span><br><span class="line">	B-&gt;Right = A;</span><br><span class="line">	<span class="keyword">return</span> B;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">AVLNode <span class="title">SingleRightRotation</span><span class="params">(AVLNode A)</span> </span>&#123;</span><br><span class="line">	AVLNode B = A-&gt;Right;</span><br><span class="line">	A-&gt;Right = B-&gt;Left;</span><br><span class="line">	B-&gt;Left = A;</span><br><span class="line">	<span class="keyword">return</span> B;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">AVLNode <span class="title">DoubleLeftRightRotation</span><span class="params">(AVLNode A)</span> </span>&#123;</span><br><span class="line">	A-&gt;Left = SingleRightRotation(A-&gt;Left);</span><br><span class="line">	<span class="keyword">return</span> SingleLeftRotation(A);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">AVLNode <span class="title">DoubleRightLeftRotation</span><span class="params">(AVLNode A)</span> </span>&#123;</span><br><span class="line">	A-&gt;Right = SingleLeftRotation(A-&gt;Right);</span><br><span class="line">	<span class="keyword">return</span> SingleRightRotation(A);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">AVLNode <span class="title">Insert</span><span class="params">(AVLNode A, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (!A) &#123;</span><br><span class="line">		AVLNode A = <span class="keyword">new</span> node();</span><br><span class="line">		A-&gt;Data = x;</span><br><span class="line">		A-&gt;Left = A-&gt;Right = <span class="literal">NULL</span>;</span><br><span class="line">		<span class="keyword">return</span> A;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (x &lt; A-&gt;Data) &#123;</span><br><span class="line">		A-&gt;Left = Insert(A-&gt;Left, x);</span><br><span class="line">		<span class="keyword">if</span> (GetHeight(A-&gt;Left) - GetHeight(A-&gt;Right) == <span class="number">2</span>) &#123;</span><br><span class="line">			<span class="keyword">if</span> (x &lt; A-&gt;Left-&gt;Data) A = SingleLeftRotation(A);</span><br><span class="line">			<span class="keyword">else</span> A = DoubleLeftRightRotation(A);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (x &gt; A-&gt;Data) &#123;</span><br><span class="line">		A-&gt;Right = Insert(A-&gt;Right, x);</span><br><span class="line">		<span class="keyword">if</span> (GetHeight(A-&gt;Right) - GetHeight(A-&gt;Left) == <span class="number">2</span>) &#123;</span><br><span class="line">			<span class="keyword">if</span> (x &gt; A-&gt;Right-&gt;Data) A = SingleRightRotation(A);</span><br><span class="line">			<span class="keyword">else</span> A = DoubleRightLeftRotation(A);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> A;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n, x;</span><br><span class="line">	AVLNode A = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;x);</span><br><span class="line">		A = Insert(A, x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>, A-&gt;Data);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="题目思路"><a href="#题目思路" class="headerlink" title="题目思路"></a>题目思路</h3><p>先来学一下8数码问题的解法：<br>首先把所有数字（不包括空位的0）写成一行，就得到了一个1~8的排列，考虑空位的交换情况：1.左右交换，2.上下交换。对于左右交换而言，是不会改变写出的排列的逆序数的；而对上下交换，相当于在排列中向前或向后跳了两个位置，那么要么两个数都比它大或小，这样逆序数加2或减2，要么两个数一个比它大一个比它小，这样逆序数不变，综上，对于八数码问题，操作不会改变逆序数的奇偶性，所以只有初始状态和指定状态的逆序数奇偶性相同就有解。</p>
+<p>弄清楚了八数码，扩展起来就容易了，现在我们将其扩展到N维（即N <em> N的board，N </em> N - 1数码问题）。</p>
+<p>首先无论N的奇偶，左右交换不改变逆序数，N为奇数时：上下交换逆序数增加N-1或减少N-1或不变，因为N为奇数，所以逆序数奇偶性不变；而N为偶数时：上下交换一次奇偶性改变一次。</p>
+<p><strong>结论：N为奇数时，初始状态与指定状态逆序数奇偶性相同即有解；N为偶数时，先计算出从初始状态到指定状态，空位要移动的行数m，如果初始状态的逆序数加上m与指定状态的逆序数奇偶性相同，则有解。</strong></p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> numm ch-48</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pd putchar(<span class="meta-string">' '</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pn putchar(<span class="meta-string">'\n'</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fi first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> se second</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mid (l + r) / 2</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fre1 freopen(<span class="meta-string">"1.txt"</span>,<span class="meta-string">"r"</span>,stdin)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fre2 freopen(<span class="meta-string">"2.txt"</span>,<span class="meta-string">"w"</span>,stdout)</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> ll;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> LL;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">read</span><span class="params">(T&amp; res)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> flag = <span class="literal">false</span>; <span class="keyword">char</span> ch;</span><br><span class="line">    <span class="keyword">while</span> (!<span class="built_in">isdigit</span>(ch = getchar())) (ch == <span class="string">'-'</span>) &amp;&amp; (flag = <span class="literal">true</span>);</span><br><span class="line">    <span class="keyword">for</span> (res = numm; <span class="built_in">isdigit</span>(ch = getchar()); res = (res &lt;&lt; <span class="number">1</span>) + (res &lt;&lt; <span class="number">3</span>) + numm);</span><br><span class="line">    flag &amp;&amp; (res = -res);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(T x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; <span class="number">0</span>) <span class="built_in">putchar</span>(<span class="string">'-'</span>), x = -x;</span><br><span class="line">    <span class="keyword">if</span> (x &gt; <span class="number">9</span>) write(x / <span class="number">10</span>);</span><br><span class="line">    <span class="built_in">putchar</span>(x % <span class="number">10</span> + <span class="string">'0'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//////////////////////////////////////////////////////////////////////////////////////////////</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">16</span>];</span><br><span class="line"><span class="keyword">int</span> b[<span class="number">15</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    read(T);</span><br><span class="line">    <span class="keyword">while</span> (T--) &#123;</span><br><span class="line">        <span class="built_in">memset</span>(a, <span class="number">0</span>, <span class="keyword">sizeof</span>(a));</span><br><span class="line">        <span class="keyword">int</span> m, cnt = <span class="number">0</span>, t = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">4</span>; j++) &#123;</span><br><span class="line">                read(a[i * <span class="number">4</span> + j]);</span><br><span class="line">                <span class="keyword">if</span> (a[i * <span class="number">4</span> + j] == <span class="number">0</span>) &#123;</span><br><span class="line">                    m = <span class="number">3</span> - i;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    b[t++] = a[i * <span class="number">4</span> + j];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (b[i] &lt; b[j]) &#123;</span><br><span class="line">                    cnt++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!((cnt + m) % <span class="number">2</span>)) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"Yes\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"No\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -463,7 +455,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/数据结构-平衡二叉树/" rel="tag"># 数据结构,平衡二叉树</a>
+            <a href="/tags/杂项/" rel="tag"># 杂项</a>
           
         </div>
       
@@ -494,8 +486,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/14/关于Windows换行符以及gethar-替代的讨论/" rel="next" title="关于Windows换行符及gethar()替代">
-                <i class="fa fa-chevron-left"></i> 关于Windows换行符及gethar()替代
+              <a href="/2019/07/30/Python-for-Data-Science(3)/" rel="next" title="233">
+                <i class="fa fa-chevron-left"></i> 233
               </a>
             
           </div>
@@ -503,10 +495,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/18/C++大数板子/" rel="prev" title="C++大数板子">
-                C++大数板子 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -537,7 +525,7 @@
 
   
     <div class="comments" id="comments">
-      <div class="fb-comments" data-href="http://www.kesisour.work/2019/04/14/[PTA] 练习4.2 平衡二叉树的根/" data-numposts="10" data-width="100%" data-colorscheme="light">
+      <div class="fb-comments" data-href="http://www.kesisour.work/2019/07/31/15数码问题及其泛化/" data-numposts="10" data-width="100%" data-colorscheme="light">
       </div>
     </div>
 
@@ -644,7 +632,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem-Description"><span class="nav-number">1.</span> <span class="nav-text">Problem Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Input-amp-amp-Output"><span class="nav-number">2.</span> <span class="nav-text">Input&amp;&amp;Output</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Input-amp-amp-Output"><span class="nav-number">3.</span> <span class="nav-text">Sample Input&amp;&amp;Output</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">4.</span> <span class="nav-text">代码实现</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Description"><span class="nav-number">1.</span> <span class="nav-text">Problem Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Input"><span class="nav-number">4.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Output"><span class="nav-number">5.</span> <span class="nav-text">Sample Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目思路"><span class="nav-number">6.</span> <span class="nav-text">题目思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解"><span class="nav-number">7.</span> <span class="nav-text">题解</span></a></li></ol></div>
             
 
           </div>
@@ -850,9 +838,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://www.kesisour.work/2019/04/14/[PTA] 练习4.2 平衡二叉树的根/';
-          this.page.identifier = '2019/04/14/[PTA] 练习4.2 平衡二叉树的根/';
-          this.page.title = '[PTA] 练习4.2 平衡二叉树的根';
+          this.page.url = 'http://www.kesisour.work/2019/07/31/15数码问题及其泛化/';
+          this.page.identifier = '2019/07/31/15数码问题及其泛化/';
+          this.page.title = '\"8数码问题及其泛化\"';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://kesisour.disqus.com/embed.js';

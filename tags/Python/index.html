@@ -85,7 +85,7 @@
 <meta name="description" content="可持续化柠檬树参上！">
 <meta property="og:type" content="website">
 <meta property="og:title" content="小宸工作站">
-<meta property="og:url" content="http://www.kesisour.work/tags/Python/index.html">
+<meta property="og:url" content="http://www.kesisour.work/tags/python/index.html">
 <meta property="og:site_name" content="小宸工作站">
 <meta property="og:description" content="可持续化柠檬树参上！">
 <meta property="og:locale" content="default">
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://www.kesisour.work/tags/Python/">
+  <link rel="canonical" href="http://www.kesisour.work/tags/python/">
 
 
 
 
 
-  <title>Tag: Python | 小宸工作站</title>
+  <title>Tag: python | 小宸工作站</title>
   
 <script>
   window.fbAsyncInit = function() {
@@ -277,7 +277,7 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h1>Python<small>Tag</small>
+        <h1>python<small>Tag</small>
         </h1>
       </div>
 
@@ -289,43 +289,17 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2019/07/28/Python-for-Data-Science(2)/" itemprop="url">
+            <a class="post-title-link" href="/2019/07/30/Python-for-Data-Science(3)/" itemprop="url">
               
-                <span itemprop="name">"Python for Data Science(2)"</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-28T01:15:29+08:00" content="2019-07-28">
-          07-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/07/25/Python-for-Data-Science(1)/" itemprop="url">
-              
-                <span itemprop="name">"Python for Data Science(1)"</span>
+                <span itemprop="name">233</span>
               
             </a>
         
       </h2>
 
       <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-25T23:03:29+08:00" content="2019-07-25">
-          07-25
+        <time class="post-time" itemprop="dateCreated" datetime="2019-07-30T03:48:18+08:00" content="2019-07-30">
+          07-30
         </time>
       </div>
 
@@ -385,7 +359,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -407,7 +381,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -458,7 +432,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">9.8k</span>
+    <span title="Site words total count">12.4k</span>
   
 </div>
 
@@ -948,6 +922,50 @@
     }
 
     // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+ and trigger popup window;
     $('.popup-trigger').click(function(e) {
       e.stopPropagation();
       if (isfetched === false) {
