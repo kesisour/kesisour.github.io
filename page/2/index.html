@@ -419,19 +419,21 @@
       
         
           
-          昨天在做2050的时候居然在第一道签到题罚了六次时？？当时直接懵逼，把题目给小伙伴帮我重新写了一个(阿洋NB！)，之后看集训群里面才知道是换行符的锅(haoyuan学长NB！)。
-查阅了一下：原链接
+            <p>昨天在做2050的时候居然在第一道签到题罚了六次时？？当时直接懵逼，把题目给小伙伴帮我重新写了一个(阿洋NB！)，之后看集训群里面才知道是换行符的锅(haoyuan学长NB！)。</p>
+<p>查阅了一下：<a href="https://www.cnblogs.com/xiaotiannet/p/3510586.html" target="_blank" rel="noopener">原链接</a></p>
+<blockquote>
+<p>在Windows中,</p>
+<p>‘\r’ 回车，回到当前行的行首，而不会换到下一行，如果接着输出的话，本行以前的内容会被逐一覆盖；</p>
+<p>‘\n’ 换行，换到当前位置的下一行，而不会回到行首；</p>
+<p>Unix系统里，每行结尾只有“&lt;换行&gt;”，即”\n”；Windows系统里面，每行结尾是“&lt;回车&gt;&lt;换行&gt;”，即“\r\n”；Mac系统里，每行结尾是“&lt;回车&gt;”，即”\r”；。一个直接后果是，Unix/Mac系统下的文件在Windows里打开的话，所有文字会变成一行；而Windows里的文件在Unix/Mac下打开的话，在每行的结尾可能会多出一个^M符号。</p>
+<p>Linux中遇到换行符(“\n”)会进行回车+换行的操作，回车符反而只会作为控制字符(“^M”)显示，不发生回车的操作。而windows中要回车符+换行符(“\r\n”)才会回车+换行，缺少一个控制符或者顺序不对都不能正确的另起一行。</p>
+</blockquote>
+<p>而杭电的判题机是Windows的，所以妄图单独用一个getchar()读掉回车符的操作就gg了。</p>
+<p>所以，尽快熟悉String的使用吧，getline()大法好啊！</p>
+<p>使用String完成循环读取字符串并挨个字符处理：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">string</span> str;</span><br><span class="line">	<span class="keyword">while</span> (getline(<span class="built_in">cin</span>, str)) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length(); i++) &#123;</span><br><span class="line">			<span class="comment">//</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>（等等…我在写这篇文章的时候突然意识到了学长的真正意思应该是使用getline()读掉换行…）</p>
 
-在Windows中,
-‘\r’ 回车，回到当前行的行首，而不会换到下一行，如果接着输出的话，本行以
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/14/关于Windows换行符以及gethar-替代的讨论/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
@@ -612,16 +614,38 @@
       
         
           
-          Problem Description
-Polar Bear Pitching helps you crystallize your message.The stage could not be any cooler, and we mean literally:a hole cut through
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/14/2050-冰水挑战（dp思路简单总结）/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><blockquote>
+<p>Polar Bear Pitching helps you crystallize your message.<br>The stage could not be any cooler, and we mean literally:<br>a hole cut through the ice in the frozen Baltic Sea.</p>
+<p>2050有一项很有挑战的活动 —— Polar Bear Pitching 。<br>体验人跳入冰水中讲述自己的恐惧，改变以及梦想。这是没有时间限制的演讲，就看你能在冰水中呆多久！</p>
+<p>现在，我们要依次面对 n 个冰水挑战，每个挑战你都可以选择接受或不接受。接受第 i 个挑战会让你丧失 ai点体力，因为每个挑战所处的环境不同，如果你要挑战它，在挑战它之前你的体力 x 会变&gt;成 min(x,bi)，当你完成这个挑战的时候，你的体力会变成 x−ai，体力任何时候不允许小于等于 0，无论你是否接受第 i 个挑战，在这个挑战结束以后你的体力都会增加 ci。</p>
+<p>现在我们想知道最多可以完成多少个挑战。</p>
+</blockquote>
+<h2 id="Input-amp-amp-Output"><a href="#Input-amp-amp-Output" class="headerlink" title="Input&amp;&amp;Output"></a>Input&amp;&amp;Output</h2><blockquote>
+<p>第一行一个正整数 T (T≤50) 表示数据组数。<br>接下来 T 组数据，每组第一行两个正整数 n,c (1≤n≤103,1≤c≤109)，表示挑战的数量和初始体力，接下来 n 行，每行三个非负整数 ai,bi,ci(0≤ai,bi,ci≤109)。</p>
+<p>对于每组数据输出一行一个数，表示你最多能完成几个挑战。</p>
+</blockquote>
+<h2 id="Sample-Input-amp-amp-Output"><a href="#Sample-Input-amp-amp-Output" class="headerlink" title="Sample Input&amp;&amp;Output"></a>Sample Input&amp;&amp;Output</h2><blockquote>
+<p>Sample Input:<br>2<br>3 10<br>1 2 0<br>4 8 3<br>6 10 1<br>2 1<br>1 1 1<br>1 1 1</p>
+</blockquote>
+<blockquote>
+<p>Sample Output:<br>2<br>0</p>
+</blockquote>
+<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><p>很典型的dp题，所以也想借这个题好好理一理面临dp时候的思路。</p>
+<p><strong>首先，啥是dp？</strong><br>在递归的时候，我们可以通过不断地分解问题，将复杂的任务简化为最基本的小问题，比如基于递归实现的归并排序，排列，组合等。不过有时候，我们并不用处理所有可能的情况，只要找到满足条件的最优解就可以了，这种情况下，我们需要在各种可能的局部解中，找出那些可能达到最优的局部解，而放弃其他的局部解，这个寻找最优解的过程叫动态规划。（<a href="https://www.jianshu.com/p/a1f5731811af" target="_blank" rel="noopener">这段话我是从这里摘的</a>）<br><strong>所以，dp就是一个不断寻找局部最优解并更新的过程。</strong></p>
+<p><strong>下一个问题，什么样的题可以用动态规划来解决？</strong><br>首先，如果一个问题有多种可能，看上去需要排列或者组合的思想，但是最终求的只是最优解，如最大值，最小值，最短子串，最长子串等，可以试试使用动态规划。<br>其实，状态转移方程是个关键。你可以用状态转移表来帮助自己理解整个过程。如果能找到准确的转移方程，那么离最终的代码实现也就不远了 。<br>这里说下什么是状态转移方程：从上一个状态到下一个状态之间可能存在一些变化，以及基于这些变化的最终决策结果。我们把这样的表达式称为状态转移方程。所有的动态规划算法中，状态转移是关键。<br><del>（我还是从上面的链接摘的，我好懒）</del></p>
+<p>由此我们知道，需要不断寻找局部最优解，并且能写出状态转移方程的题目，就直接写dp跑就行了（大概）。</p>
+<p>接下来我们回到这个题目，dp的思路已经十分明确了：</p>
+<ol>
+<li><p>建立一个数组是s[0~n]来存储接受0~n个挑战后的体力（最优体力）</p>
+</li>
+<li><p>尝试建立状态转移方程：<code>s[j + 1] = max(s[j + 1], min(s[j], b[i]) - a[i] + c[i]);</code>（abc数组的具体含义去阅读我的完整代码好不啦）。注意：因为每次是s[j]更新都需要要用到是s[j-1]的值，因此在同一个挑战里面更新s[j]需要逆序循环。（我仿佛突然明白了运筹学课本里说dp一般逆序的含义？？运筹学NB！！）</p>
+</li>
+<li><p>从头开始跑一遍所有挑战，并建立变量m存储最多的挑战次数</p>
+</li>
+</ol>
+<p>Over~<br><del>今天的小宸依旧是又进步了一点点的小菜鸡呢</del></p>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> t, n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;t);</span><br><span class="line">	<span class="keyword">while</span> (t--) &#123;</span><br><span class="line">		<span class="keyword">int</span> a[<span class="number">1010</span>], b[<span class="number">1010</span>], c[<span class="number">1010</span>], s[<span class="number">1010</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;n, &amp;s[<span class="number">0</span>]);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>, &amp;a[i], &amp;b[i], &amp;c[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> m = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = m; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">				<span class="keyword">if</span> (min(s[j], b[i]) - a[i] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">					s[j + <span class="number">1</span>] = max(s[j + <span class="number">1</span>], min(s[j], b[i]) - a[i] + c[i]);</span><br><span class="line">					s[j] += c[i];</span><br><span class="line">					m = max(m, j + <span class="number">1</span>);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> &#123;</span><br><span class="line">					s[j] += c[i];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, m);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
         
       
     </div>
@@ -802,16 +826,20 @@ Polar Bear Pitching helps you crystallize your message.The stage could not be an
       
         
           
-          题目与分析今天在刷pta上面的数据结构的时候，发现居然忘了汉诺塔怎么做…日…我真的是越来越菜了…汉诺塔是什么这里就不用来重复了吧？附个链接，有兴趣的自己去看。
-接下来简单的讲一下思路。我们都知道汉诺塔的思想就是靠和尚们互相推诿来做对吧？当你是其中一个和尚，你看见一堆盘子丢在a柱上面，你要做的事情只有
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/10/汉诺塔/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="题目与分析"><a href="#题目与分析" class="headerlink" title="题目与分析"></a>题目与分析</h2><p>今天在刷pta上面的数据结构的时候，发现居然忘了汉诺塔怎么做…<br>日…我真的是越来越菜了…<br>汉诺塔是什么这里就不用来重复了吧？附个<a href="https://zh.wikipedia.org/zh-hans/%E6%B1%89%E8%AF%BA%E5%A1%94" target="_blank" rel="noopener">链接</a>，有兴趣的自己去看。</p>
+<p>接下来简单的讲一下思路。我们都知道汉诺塔的思想就是靠和尚们互相推诿来做对吧？当你是其中一个和尚，你看见一堆盘子丢在a柱上面，你要做的事情只有三个：</p>
+<ol>
+<li><p>命令小和尚把除了最后一个之外的盘子全都丢在b柱上。</p>
+</li>
+<li><p>自己把a柱上最后一个盘子放在c柱上。</p>
+</li>
+<li><p>命令小和尚把b柱上的盘子丢在c柱上，自己走人。</p>
+</li>
+</ol>
+<p>这样一看多简单啊！<del>多么醉人的递归思想</del></p>
+<p>来，直接po代码了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="keyword">char</span> a, b, c;</span><br><span class="line">	node(<span class="keyword">int</span> m, <span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> z) :n(m), a(x), b(y), c(z)&#123;&#125;</span><br><span class="line">&#125;node;</span><br><span class="line"></span><br><span class="line"><span class="built_in">stack</span> &lt;node&gt; s;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">	s.push(node(n, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>));</span><br><span class="line">	<span class="keyword">while</span> (!s.empty()) &#123;</span><br><span class="line">		node t = s.top();</span><br><span class="line">		s.pop();</span><br><span class="line">		<span class="keyword">if</span> (t.n == <span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">"%c -&gt; %c\n"</span>, t.a, t.c);</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			s.push(node(t.n - <span class="number">1</span>, t.b, t.a, t.c));</span><br><span class="line">			s.push(node(<span class="number">1</span>, t.a, t.b, t.c));</span><br><span class="line">			s.push(node(t.n - <span class="number">1</span>, t.a, t.c, t.b));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
         
       
     </div>
@@ -992,19 +1020,13 @@ Polar Bear Pitching helps you crystallize your message.The stage could not be an
       
         
           
-          小宸写的第一篇博文好叭！话说，这里真的是正文嘛？？哇靠，写起来这么奇怪的吗？写在这里真的会显示在网页上嘛？我好怀疑啊（盯
-还有，hexo的原生主题也太丑了吧….看不下去的那种好吗？？？
-时间有限，我就先写这么多了哟！有时间再来好好研究下这玩意！
-下面是我的试验田
-1printf("这里应该是代码块"
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/30/Hello World!/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>小宸写的第一篇博文好叭！<br>话说，这里真的是正文嘛？？<br>哇靠，写起来这么奇怪的吗？写在这里真的会显示在网页上嘛？<br>我好怀疑啊（盯</p>
+<p>还有，hexo的原生主题也太丑了吧….看不下去的那种好吗？？？</p>
+<p>时间有限，我就先写这么多了哟！有时间再来好好研究下这玩意！</p>
+<p><del>下面是我的试验田</del></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">"这里应该是代码块"</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="这是一级标题"><a href="#这是一级标题" class="headerlink" title="这是一级标题"></a>这是一级标题</h1><h2 id="这是二级标题"><a href="#这是二级标题" class="headerlink" title="这是二级标题"></a>这是二级标题</h2>
+          
         
       
     </div>
@@ -1110,7 +1132,7 @@ Polar Bear Pitching helps you crystallize your message.The stage could not be an
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
