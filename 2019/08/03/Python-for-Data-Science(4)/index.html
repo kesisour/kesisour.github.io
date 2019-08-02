@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python,">
+
+
+
+
+
+
+
+
+  <meta property="fb:admins" content="<user_id>">
+  <meta property="fb:app_id" content="<app_id>">
+
+
+
+<meta name="description" content="这个系列终于要写完了…天天写语法知识真的无聊 Working with External Libraries(看这个标题应该是学怎么import module叭 One of the best things about Python (especially if you’re a data scientist) is the vast number of high-quality custom l">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python-for-Data-Science(4)">
+<meta property="og:url" content="http://www.kesisour.work/2019/08/03/Python-for-Data-Science(4)/index.html">
+<meta property="og:site_name" content="小宸工作站">
+<meta property="og:description" content="这个系列终于要写完了…天天写语法知识真的无聊 Working with External Libraries(看这个标题应该是学怎么import module叭 One of the best things about Python (especially if you’re a data scientist) is the vast number of high-quality custom l">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-02T16:33:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python-for-Data-Science(4)">
+<meta name="twitter:description" content="这个系列终于要写完了…天天写语法知识真的无聊 Working with External Libraries(看这个标题应该是学怎么import module叭 One of the best things about Python (especially if you’re a data scientist) is the vast number of high-quality custom l">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.kesisour.work/2019/08/03/Python-for-Data-Science(4)/">
+
+
+
+
+
+  <title>Python-for-Data-Science(4) | 小宸工作站</title>
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '<app_id>',
+      xfbml      : true,
+      version    : 'v2.10'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net//sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小宸工作站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">莎士比亚应葬于此。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.kesisour.work/2019/08/03/Python-for-Data-Science(4)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kesisour">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小宸工作站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python-for-Data-Science(4)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-03T00:33:48+08:00">
+                2019-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Data-Science/" itemprop="url" rel="index">
+                    <span itemprop="name">Data Science</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/03/Python-for-Data-Science(4)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://www.kesisour.work/2019/08/03/Python-for-Data-Science(4)/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  2.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这个系列终于要写完了…天天写语法知识真的无聊</p>
+<h2 id="Working-with-External-Libraries"><a href="#Working-with-External-Libraries" class="headerlink" title="Working with External Libraries"></a>Working with External Libraries</h2><p>(看这个标题应该是学怎么<code>import module</code>叭</p>
+<p>One of the best things about Python (especially if you’re a data scientist) is the vast number of high-quality custom libraries that have been written for it.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line">print(<span class="string">"It's math! It has type &#123;&#125;"</span>.format(type(math)))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">It&apos;s math! It has type &lt;class &apos;module&apos;&gt;</span><br></pre></td></tr></table></figure>
+<p><code>math</code> is just a module. A module is just a collection of variables (a namespace 233333) defined by someone else. Wa can see all the names in <code>math</code> using the built-in function <code>dir()</code>.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(dir(math))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&apos;__doc__&apos;, &apos;__file__&apos;, &apos;__loader__&apos;, &apos;__name__&apos;, &apos;__package__&apos;, &apos;__spec__&apos;, &apos;acos&apos;, &apos;acosh&apos;, &apos;asin&apos;, &apos;asinh&apos;, &apos;atan&apos;, &apos;atan2&apos;, &apos;atanh&apos;, &apos;ceil&apos;, &apos;copysign&apos;, &apos;cos&apos;, &apos;cosh&apos;, &apos;degrees&apos;, &apos;e&apos;, &apos;erf&apos;, &apos;erfc&apos;, &apos;exp&apos;, &apos;expm1&apos;, &apos;fabs&apos;, &apos;factorial&apos;, &apos;floor&apos;, &apos;fmod&apos;, &apos;frexp&apos;, &apos;fsum&apos;, &apos;gamma&apos;, &apos;gcd&apos;, &apos;hypot&apos;, &apos;inf&apos;, &apos;isclose&apos;, &apos;isfinite&apos;, &apos;isinf&apos;, &apos;isnan&apos;, &apos;ldexp&apos;, &apos;lgamma&apos;, &apos;log&apos;, &apos;log10&apos;, &apos;log1p&apos;, &apos;log2&apos;, &apos;modf&apos;, &apos;nan&apos;, &apos;pi&apos;, &apos;pow&apos;, &apos;radians&apos;, &apos;sin&apos;, &apos;sinh&apos;, &apos;sqrt&apos;, &apos;tan&apos;, &apos;tanh&apos;, &apos;tau&apos;, &apos;trunc&apos;]</span><br></pre></td></tr></table></figure>
+<p>We can access these variables using dot syntax. Some of them refer to simple values, like <code>math.pi</code>:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"pi to 4 significant digits = &#123;:.4&#125;"</span>.format(math.pi))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pi to 4 significant digits = 3.142</span><br></pre></td></tr></table></figure>
+<p>然而真正重要的是 <code>module</code> 里面的各种函数：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">math.log(<span class="number">32</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5.0</span><br></pre></td></tr></table></figure>
+<p>We can also call <code>help()</code> on the module itself. This will give us the combined documentation for all the functions and values in the module (as well as a high-level description of the module). Click the “output” button to see the whole math help page.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">help(math)</span><br></pre></td></tr></table></figure>
+<p>我们可以在 import 的时候对 module 进行重命名，来方面我们的后期调用：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math <span class="keyword">as</span> mt</span><br><span class="line">mt.pi</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3.141592653589793</span><br></pre></td></tr></table></figure>
+<p>上面的操作也等价于：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line">mt = math</span><br></pre></td></tr></table></figure>
+<p>Wouldn’t it be great if we could refer to all the variables in the <code>math</code> module by themselves? i.e. if we could just refer to pi instead of <code>math.pi</code> or <code>mt.pi</code>? Good news: we can do that.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> *</span><br><span class="line">print(pi, log(<span class="number">32</span>, <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3.141592653589793 5.0</span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *</span><br><span class="line">print(pi, log(<span class="number">32</span>, <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---------------------------------------------------------------------------</span><br><span class="line">TypeError                                 Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-10-5045b296ad83&gt; in &lt;module&gt;()</span><br><span class="line">      1 from math import *</span><br><span class="line">      2 from numpy import *</span><br><span class="line">----&gt; 3 print(pi, log(32, 2))</span><br><span class="line"></span><br><span class="line">TypeError: return arrays must be of ArrayType</span><br></pre></td></tr></table></figure>
+<p>上面这个看起来很诡异的情况是因为 numpy 里面也有一个 log 函数，所以就把前面的函数覆盖了<br>所以比较保险的做法就是把要用的变量导入进去：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> log, pi</span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> asarray</span><br></pre></td></tr></table></figure>
+<h3 id="Submodules"><a href="#Submodules" class="headerlink" title="Submodules"></a>Submodules</h3><p>We’ve seen that modules contain variables which can refer to functions or values. Something to be aware of is that they can also have variables referring to other modules.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line">print(<span class="string">"numpy.random is a"</span>, type(numpy.random))</span><br><span class="line">print(<span class="string">"it contains names such as..."</span>,</span><br><span class="line">      dir(numpy.random)[<span class="number">-15</span>:]</span><br><span class="line">     )</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">numpy.random is a &lt;class &apos;module&apos;&gt;</span><br><span class="line">it contains names such as... [&apos;set_state&apos;, &apos;shuffle&apos;, &apos;standard_cauchy&apos;, &apos;standard_exponential&apos;, &apos;standard_gamma&apos;, &apos;standard_normal&apos;, &apos;standard_t&apos;, &apos;test&apos;, &apos;triangular&apos;, &apos;uniform&apos;, &apos;vonmises&apos;, &apos;wald&apos;, &apos;warnings&apos;, &apos;weibull&apos;, &apos;zipf&apos;]</span><br></pre></td></tr></table></figure>
+<p>So if we import numpy as above, then calling a function in the <code>random</code> “submodule” will require two dots.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Roll 10 dice</span></span><br><span class="line">rolls = numpy.random.randint(low=<span class="number">1</span>, high=<span class="number">6</span>, size=<span class="number">10</span>)</span><br><span class="line">rolls</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array([3, 4, 4, 2, 5, 3, 5, 1, 2, 3])</span><br></pre></td></tr></table></figure>
+<h3 id="Oh-the-place-you’ll-go-oh-the-objects-you’ll-see"><a href="#Oh-the-place-you’ll-go-oh-the-objects-you’ll-see" class="headerlink" title="Oh the place you’ll go, oh the objects you’ll see"></a>Oh the place you’ll go, oh the objects you’ll see</h3><p><del>上面这句话好像有点酷</del></p>
+<p>So after 6 lessons, you’re a pro with ints, floats, bools, lists, strings, and dicts (right?).</p>
+<p>Even if that were true, it doesn’t end there. As you work with various libraries for specialized tasks, you’ll find that they define their own types which you’ll have to learn to work with. </p>
+<p>所以，我们有如下三大工具来帮助我们对这些额外的 object 进行理解：</p>
+<p>In the cell above, we saw that calling a <code>numpy</code> function gave us an “array”. We’ve never seen anything like this before (not in this course anyways). But don’t panic: we have three familiar builtin functions to help us here.</p>
+<ol>
+<li><code>type()</code> (what is this thing?)</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type(rolls)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.ndarray</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><code>dir()</code> (what can I do with it?)</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(dir(rolls))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&apos;T&apos;, &apos;__abs__&apos;, &apos;__add__&apos;, &apos;__and__&apos;, &apos;__array__&apos;, &apos;__array_finalize__&apos;, &apos;__array_function__&apos;, &apos;__array_interface__&apos;, &apos;__array_prepare__&apos;, &apos;__array_priority__&apos;, &apos;__array_struct__&apos;, &apos;__array_ufunc__&apos;, &apos;__array_wrap__&apos;, &apos;__bool__&apos;, &apos;__class__&apos;, &apos;__complex__&apos;, &apos;__contains__&apos;, &apos;__copy__&apos;, &apos;__deepcopy__&apos;, &apos;__delattr__&apos;, &apos;__delitem__&apos;, &apos;__dir__&apos;, &apos;__divmod__&apos;, &apos;__doc__&apos;, &apos;__eq__&apos;, &apos;__float__&apos;, &apos;__floordiv__&apos;, &apos;__format__&apos;, &apos;__ge__&apos;, &apos;__getattribute__&apos;, &apos;__getitem__&apos;, &apos;__gt__&apos;, &apos;__hash__&apos;, &apos;__iadd__&apos;, &apos;__iand__&apos;, &apos;__ifloordiv__&apos;, &apos;__ilshift__&apos;, &apos;__imatmul__&apos;, &apos;__imod__&apos;, &apos;__imul__&apos;, &apos;__index__&apos;, &apos;__init__&apos;, &apos;__init_subclass__&apos;, &apos;__int__&apos;, &apos;__invert__&apos;, &apos;__ior__&apos;, &apos;__ipow__&apos;, &apos;__irshift__&apos;, &apos;__isub__&apos;, &apos;__iter__&apos;, &apos;__itruediv__&apos;, &apos;__ixor__&apos;, &apos;__le__&apos;, &apos;__len__&apos;, &apos;__lshift__&apos;, &apos;__lt__&apos;, &apos;__matmul__&apos;, &apos;__mod__&apos;, &apos;__mul__&apos;, &apos;__ne__&apos;, &apos;__neg__&apos;, &apos;__new__&apos;, &apos;__or__&apos;, &apos;__pos__&apos;, &apos;__pow__&apos;, &apos;__radd__&apos;, &apos;__rand__&apos;, &apos;__rdivmod__&apos;, &apos;__reduce__&apos;, &apos;__reduce_ex__&apos;, &apos;__repr__&apos;, &apos;__rfloordiv__&apos;, &apos;__rlshift__&apos;, &apos;__rmatmul__&apos;, &apos;__rmod__&apos;, &apos;__rmul__&apos;, &apos;__ror__&apos;, &apos;__rpow__&apos;, &apos;__rrshift__&apos;, &apos;__rshift__&apos;, &apos;__rsub__&apos;, &apos;__rtruediv__&apos;, &apos;__rxor__&apos;, &apos;__setattr__&apos;, &apos;__setitem__&apos;, &apos;__setstate__&apos;, &apos;__sizeof__&apos;, &apos;__str__&apos;, &apos;__sub__&apos;, &apos;__subclasshook__&apos;, &apos;__truediv__&apos;, &apos;__xor__&apos;, &apos;all&apos;, &apos;any&apos;, &apos;argmax&apos;, &apos;argmin&apos;, &apos;argpartition&apos;, &apos;argsort&apos;, &apos;astype&apos;, &apos;base&apos;, &apos;byteswap&apos;, &apos;choose&apos;, &apos;clip&apos;, &apos;compress&apos;, &apos;conj&apos;, &apos;conjugate&apos;, &apos;copy&apos;, &apos;ctypes&apos;, &apos;cumprod&apos;, &apos;cumsum&apos;, &apos;data&apos;, &apos;diagonal&apos;, &apos;dot&apos;, &apos;dtype&apos;, &apos;dump&apos;, &apos;dumps&apos;, &apos;fill&apos;, &apos;flags&apos;, &apos;flat&apos;, &apos;flatten&apos;, &apos;getfield&apos;, &apos;imag&apos;, &apos;item&apos;, &apos;itemset&apos;, &apos;itemsize&apos;, &apos;max&apos;, &apos;mean&apos;, &apos;min&apos;, &apos;nbytes&apos;, &apos;ndim&apos;, &apos;newbyteorder&apos;, &apos;nonzero&apos;, &apos;partition&apos;, &apos;prod&apos;, &apos;ptp&apos;, &apos;put&apos;, &apos;ravel&apos;, &apos;real&apos;, &apos;repeat&apos;, &apos;reshape&apos;, &apos;resize&apos;, &apos;round&apos;, &apos;searchsorted&apos;, &apos;setfield&apos;, &apos;setflags&apos;, &apos;shape&apos;, &apos;size&apos;, &apos;sort&apos;, &apos;squeeze&apos;, &apos;std&apos;, &apos;strides&apos;, &apos;sum&apos;, &apos;swapaxes&apos;, &apos;take&apos;, &apos;tobytes&apos;, &apos;tofile&apos;, &apos;tolist&apos;, &apos;tostring&apos;, &apos;trace&apos;, &apos;transpose&apos;, &apos;var&apos;, &apos;view&apos;]</span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># What am I trying to do with this dice roll data? Maybe I want the average roll, in which case the "mean"</span></span><br><span class="line"><span class="comment"># method looks promising...</span></span><br><span class="line">rolls.mean()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3.2</span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Or maybe I just want to get back on familiar ground, in which case I might want to check out "tolist"</span></span><br><span class="line">rolls.tolist()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[3, 4, 4, 2, 5, 3, 5, 1, 2, 3]</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><code>help()</code> (tell me more)</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># That "ravel" attribute sounds interesting. I'm a big classical music fan.</span></span><br><span class="line">help(rolls.ravel)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Help on built-in function ravel:</span><br><span class="line"></span><br><span class="line">ravel(...) method of numpy.ndarray instance</span><br><span class="line">    a.ravel([order])</span><br><span class="line">    </span><br><span class="line">    Return a flattened array.</span><br><span class="line">    </span><br><span class="line">    Refer to `numpy.ravel` for full documentation.</span><br><span class="line">    </span><br><span class="line">    See Also</span><br><span class="line">    --------</span><br><span class="line">    numpy.ravel : equivalent function</span><br><span class="line">    </span><br><span class="line">    ndarray.flat : a flat iterator on the array.</span><br></pre></td></tr></table></figure>
+<h3 id="Operator-overloading"><a href="#Operator-overloading" class="headerlink" title="Operator overloading"></a>Operator overloading</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">3</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>] + <span class="number">10</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---------------------------------------------------------------------------</span><br><span class="line">TypeError                                 Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-20-a2508fc27c2b&gt; in &lt;module&gt;()</span><br><span class="line">----&gt; 1 [3, 4, 1, 2, 2, 1] + 10</span><br><span class="line"></span><br><span class="line">TypeError: can only concatenate list (not &quot;int&quot;) to list</span><br></pre></td></tr></table></figure>
+<p>but<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rolls + <span class="number">10</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array([13, 14, 14, 12, 15, 13, 15, 11, 12, 13])</span><br></pre></td></tr></table></figure>
+<p>When you define a new type, you can choose how addition works for it, or what it means for an object of that type to be equal to something else.</p>
+<p>The designers of lists decided that adding them to numbers wasn’t allowed. The designers of <code>numpy</code> arrays went a different way (adding the number to each element of the array).</p>
+<p>Here are a few more examples of how <code>numpy</code> arrays interact unexpectedly with Python operators (or at least differently from lists).</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># At which indices are the dice less than or equal to 3?</span></span><br><span class="line">rolls &lt;= <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array([ True, False, False,  True, False,  True, False,  True,  True,</span><br><span class="line">        True])</span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">xlist = [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>],]</span><br><span class="line"><span class="comment"># Create a 2-dimensional array</span></span><br><span class="line">x = numpy.asarray(xlist)</span><br><span class="line">print(<span class="string">"xlist = &#123;&#125;\nx = \n&#123;&#125;"</span>.fotmat(xlist, x))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">xlist = [[1, 2, 3], [2, 4, 6]]</span><br><span class="line">x =</span><br><span class="line">[[1 2 3]</span><br><span class="line"> [2 4 6]]</span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Get the last element of the second row of our numpy array</span></span><br><span class="line">x[<span class="number">1</span>,<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6</span><br></pre></td></tr></table></figure>
+<p>（当然上面的操作在 xlist 里面是无法被复刻的哦~</p>
+<p>numpy’s <code>ndarray</code> type is specialized for working with multi-dimensional data, so it defines its own logic for indexing, allowing us to index by a tuple to specify the index at each dimension.</p>
+<h3 id="When-does-1-1-not-equal-2"><a href="#When-does-1-1-not-equal-2" class="headerlink" title="When does 1 + 1 not equal 2?"></a>When does 1 + 1 not equal 2?</h3><p>Things can get weirder than this. You may have heard of (or even used) <strong>tensorflow</strong>, a Python library popularly used for deep learning. It makes extensive use of operator overloading.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="comment"># Create two constants, each with value 1</span></span><br><span class="line">a = tf.constant(<span class="number">1</span>)</span><br><span class="line">b = tf.constant(<span class="number">1</span>)</span><br><span class="line">a + b</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;tf.Tensor &apos;add:0&apos; shape=() dtype=int32&gt;</span><br></pre></td></tr></table></figure>
+<p><code>a + b</code> isn’t 2, it is (to quote tensorflow’s documentation)…</p>
+<blockquote>
+<p>a symbolic handle to one of the outputs of an Operation. It does not hold the values of that operation’s output, but instead provides a means of computing those values in a TensorFlow tf.Session.</p>
+</blockquote>
+<p>(说实话这里以及之后的地方我就看不懂了…碍于英语水平？等真正系统学习 tensorflow 的时候我会把这里再补上的)</p>
+<p><em>写在最后：说实话这个Python for Data Science系列写的我十分痛苦，知识点都太无聊而繁琐了，我写文的方式也有问题，后面几乎变成了清一色的 copy kaggle 原文，这个在我以后的博文中一定会改的，将写作方式从边学边记变成学完再整理，给大家带来不好的阅读体验请多海涵</em><br><em>（鞠躬</em></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+          <div class="social-like">
+            
+
+            
+              <div class="fb_like">
+                <div class="fb-like" data-layout="button_count" data-share="true"></div>
+              </div>
+            
+          </div>
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/01/Python-for-Data-Science(3)/" rel="next" title="Python-for-Data-Science(3)">
+                <i class="fa fa-chevron-left"></i> Python-for-Data-Science(3)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="fb-comments" data-href="http://www.kesisour.work/2019/08/03/Python-for-Data-Science(4)/" data-numposts="10" data-width="100%" data-colorscheme="light">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">kesisour</p>
+              <p class="site-description motion-element" itemprop="description">可持续化柠檬树参上！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Working-with-External-Libraries"><span class="nav-number">1.</span> <span class="nav-text">Working with External Libraries</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Submodules"><span class="nav-number">1.1.</span> <span class="nav-text">Submodules</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Oh-the-place-you’ll-go-oh-the-objects-you’ll-see"><span class="nav-number">1.2.</span> <span class="nav-text">Oh the place you’ll go, oh the objects you’ll see</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Operator-overloading"><span class="nav-number">1.3.</span> <span class="nav-text">Operator overloading</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#When-does-1-1-not-equal-2"><span class="nav-number">1.4.</span> <span class="nav-text">When does 1 + 1 not equal 2?</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">kesisour</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">14.5k</span>
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://kesisour.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://www.kesisour.work/2019/08/03/Python-for-Data-Science(4)/';
+          this.page.identifier = '2019/08/03/Python-for-Data-Science(4)/';
+          this.page.title = 'Python-for-Data-Science(4)';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kesisour.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
